@@ -27,7 +27,7 @@
     
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="mx.edu.um.blog.model" />
+        <property name="packagesToScan" value="mx.gob.cfe.documentos.model" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>

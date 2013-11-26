@@ -21,6 +21,7 @@
             <div class="errorblock">
                 Your login attempt was not successful, try again.<br /> Caused :
                 ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+                <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
             </div>
         </c:if>
 
