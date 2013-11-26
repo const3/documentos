@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gob.mx.cfe.documentos.utils;
+package mx.gob.cfe.documentos.web;
 
 import java.security.Principal;
 import org.springframework.stereotype.Controller;

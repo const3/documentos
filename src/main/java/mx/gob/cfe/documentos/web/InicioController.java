@@ -21,8 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package gob.mx.cfe.documentos.web;
+package mx.gob.cfe.documentos.web;
 
+import mx.gob.cfe.documentos.dao.DocumentoDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class InicioController {
 
     private static final Logger log = LoggerFactory.getLogger(InicioController.class);
+    @Autowired
+    private DocumentoDao documentoDao;
 
     @RequestMapping
     public String inicio(Model model) {

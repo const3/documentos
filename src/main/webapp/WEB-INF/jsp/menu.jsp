@@ -44,17 +44,17 @@
                                 <li> <a href="<c:url value='/oficio'/>">Oficios</a></li>
                             </ul>
                         </li>
-                    </ul>
-                    <ul class="nav navbar-tabs navbar-right">
-                        <li>
-                            <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
-                        </li>
+
+                        <p class="navbar-text pull-right">
+                            <text><%= request.getUserPrincipal().getName()%></text> 
+                            <a href="<c:url value='/j_spring_security_logout' />"><i class="icon-off"></i>Salir</a></p>
                     </ul>
 
                 </div><!--/.nav-collapse -->
             </div>
         </div>
     </nav>
+    <br/>
     <br/>
     <br/>
 </html>

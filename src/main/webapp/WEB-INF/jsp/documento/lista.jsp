@@ -35,6 +35,7 @@
                         <td>${documento.remitente}</td>
                         <td>${documento.creador}</td>
                         <td>${documento.folio}</td>
+                        <td><a href="<c:url value="/documento/edita/${documento.id}"/>">Editar </a></td>
                     </tr>
                 </c:forEach> 
             </tbody>

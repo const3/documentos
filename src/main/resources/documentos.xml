@@ -11,7 +11,7 @@
            
     <context:property-placeholder location="classpath*:ambiente/docs.properties,file:${user.home}/docs*.properties"/>
     
-    <context:component-scan base-package="gob.mx.cfe.documentos" >
+    <context:component-scan base-package="mx.gob.cfe.documentos" >
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
