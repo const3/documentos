@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates and open the template
  * in the editor.
  */
-package mx.gob.cfe.docs.dao;
+package mx.gob.cfe.documentos.dao;
 
 import java.util.Date;
 import java.util.List;
