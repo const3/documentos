@@ -44,7 +44,11 @@
                                 <li> <a href="<c:url value='/oficio'/>">Oficios</a></li>
                             </ul>
                         </li>
-                        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+                    </ul>
+                    <ul class="nav navbar-tabs navbar-right">
+                        <li>
+                            <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+                        </li>
                     </ul>
 
                 </div><!--/.nav-collapse -->
