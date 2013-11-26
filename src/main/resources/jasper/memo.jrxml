@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="circular" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9034a68-9ed5-4704-b3b5-2c940c3b8239">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="destinatario" class="java.lang.String"/>
+	<field name="contenido" class="java.lang.String"/>
+	<field name="folio" class="java.lang.String"/>
+	<field name="remitente" class="java.lang.String"/>
+	<background>
+		<band height="802" splitType="Stretch">
+			<textField>
+				<reportElement uuid="c4eadfd7-3bde-429d-9833-2b9657e2a2d1" x="25" y="126" width="166" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{destinatario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1ec9ed76-9547-4519-a12b-b0ab76184b54" x="25" y="204" width="515" height="274"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{contenido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0987ff79-e49a-4a0f-a609-7e3c166fc322" x="373" y="126" width="167" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bf87f0a6-948e-420f-b05d-0cc370d515ef" x="231" y="537" width="170" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{remitente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</background>
+</jasperReport>

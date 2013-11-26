@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="circular" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9034a68-9ed5-4704-b3b5-2c940c3b8239">
+    <property name="ireport.zoom" value="1.5"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="1096"/>
+    <field name="destinatario" class="java.lang.String"/>
+    <field name="contenido" class="java.lang.String"/>
+    <field name="folio" class="java.lang.String"/>
+    <field name="remitente" class="java.lang.String"/>
+    <field name="creador" class="java.lang.String"/>
+    <field name="fecha" class="java.util.Date"/>
+    <field name="asunto" class="java.lang.String"/>
+    <field name="tipoDocumento" class="java.lang.String"/>
+    <background>
+        <band height="802" splitType="Stretch">
+            <image>
+                <reportElement uuid="13f83fa8-0f2b-446c-81cf-3c80e40ea69e" x="25" y="146" width="515" height="612"/>
+                <imageExpression><![CDATA["/home/develop/NetBeansProjects/documentos/src/main/resources/jasper/marcadeagua.jpg"]]></imageExpression>
+            </image>
+            <textField>
+                <reportElement uuid="c4eadfd7-3bde-429d-9833-2b9657e2a2d1" x="25" y="146" width="166" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{destinatario}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="1ec9ed76-9547-4519-a12b-b0ab76184b54" x="25" y="192" width="515" height="428"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{contenido}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="0987ff79-e49a-4a0f-a609-7e3c166fc322" x="440" y="86" width="84" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{folio}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="bf87f0a6-948e-420f-b05d-0cc370d515ef" x="205" y="667" width="170" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{remitente}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="e18bd61c-9a86-40ad-8a51-01bedd843af2" x="25" y="755" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{creador}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="949171a9-b964-4f78-ad31-f6d2ac6f7a71" x="308" y="106" width="116" height="20"/>
+                <textElement/>
+                <text><![CDATA[Montemorelos N.L. a]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="b65419cd-b7c1-4708-b3ca-1d6424252c66" x="308" y="126" width="216" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{asunto}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="8c4e9b94-7665-49ac-9fbe-2471496e8296" x="391" y="86" width="49" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{tipoDocumento}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd MMMMM yyyy">
+                <reportElement uuid="962d3a76-5b69-41b6-b1a0-87092a5db67d" x="424" y="106" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </background>
+    <pageHeader>
+        <band height="61">
+            <staticText>
+                <reportElement uuid="7a3c484e-0fd4-42b6-a0b8-fdd197a3f312" x="375" y="0" width="180" height="38"/>
+                <textElement textAlignment="Right"/>
+                <text><![CDATA[División de Distribución Golfo Norte
+Zona Montemorelos Linares
+Depto. Superintendencia]]></text>
+            </staticText>
+            <image>
+                <reportElement uuid="fa58efdb-864d-4b04-b967-365849c4246c" x="0" y="0" width="205" height="41"/>
+                <imageExpression><![CDATA["/home/develop/NetBeansProjects/documentos/src/main/resources/jasper/selloencabezado.jpg"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement uuid="da21f368-e9d8-44ff-8508-c888126c3653" x="94" y="41" width="379" height="20"/>
+                <textElement/>
+                <text><![CDATA[“2013,  Año De la Lealtad Institucional y Centenario del Ejercito Mexicano”]]></text>
+            </staticText>
+        </band>
+    </pageHeader>
+    <pageFooter>
+        <band height="50">
+            <staticText>
+                <reportElement uuid="aa811d2e-e195-430d-bdc9-243b1aaf93bb" x="94" y="18" width="372" height="32"/>
+                <textElement textAlignment="Center"/>
+                <text><![CDATA[Manuel Acuña 302 Pte. Col. Gil de Leyva C. P. 67560 Montemorelos N. L.
+Tel. 826 263 0150 ext. 12000]]></text>
+            </staticText>
+        </band>
+    </pageFooter>
+</jasperReport>
