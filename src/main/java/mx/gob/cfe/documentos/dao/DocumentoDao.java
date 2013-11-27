@@ -50,10 +50,10 @@ public class DocumentoDao {
 
     public String elimina(Long documentoId) {
         Documento documento = (Documento) currentSession().get(Documento.class, documentoId);
-        String autor = documento.getAutor();
+        String creador = documento.getCreador();
         currentSession().delete(documento);
         currentSession().flush();
-        return autor;
+        return creador;
     }
 
     public Documento obtiene(Long documentoId) {

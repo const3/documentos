@@ -25,6 +25,7 @@
             </form:errors>
             <form:hidden path="id" />
             <form:hidden path="version" />
+            ${documento.id}
             <fieldset>
                 <div class="row-fluid">
 
@@ -80,6 +81,14 @@
                                     Autor<span class="required-indicator">*</span>
                                 </label>
                             <form:input path="creador" maxlength="128" required="true" />
+                        </div>
+                    </s:bind>
+                    <s:bind path="documento.asunto">
+                        <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
+                                <label for="asunto">
+                                    Asunto<span class="required-indicator">*</span>
+                                </label>
+                            <form:input path="asunto" maxlength="128" required="true" />
                         </div>
                     </s:bind>
 

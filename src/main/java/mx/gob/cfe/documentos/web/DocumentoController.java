@@ -103,7 +103,7 @@ public class DocumentoController {
     }
 
     @RequestMapping(value = "/actualiza", method = RequestMethod.POST)
-    public String actualiza(HttpServletRequest request, @Valid Documento documento, BindingResult bindingResult, Errors errors,
+    public String actualiza(@Valid Documento documento, HttpServletRequest request, BindingResult bindingResult, Errors errors,
             Model modelo, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             log.error("Hubo algun error en la forma, regresando");
@@ -114,7 +114,8 @@ public class DocumentoController {
             return "documento/edita";
         }
         try {
-
+            log.debug("documento{}id", documento.getId());
+            log.debug("documento{}", documento.toString());
             documento = instance.actualiza(documento);
         } catch (ConstraintViolationException e) {
             log.error("No se pudo crear la Asociacion", e);

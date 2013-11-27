@@ -7,7 +7,11 @@ package mx.gob.cfe.documentos.dao;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
+import java.util.Set;
 import mx.gob.cfe.documentos.model.ContadorArchivo;
+import mx.gob.cfe.documentos.model.Rol;
+import mx.gob.cfe.documentos.model.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +28,10 @@ public class InicializaDao {
 
     @Autowired
     private ContadorArchivoDao contadorArchivoDao;
+    @Autowired
+    private UsuarioDao usuarioDao;
+    @Autowired
+    private RolDao rolDao;
 
     private transient Logger log = LoggerFactory.getLogger(InicializaDao.class);
 
@@ -58,6 +66,22 @@ public class InicializaDao {
         contadorArchivo.setContador(1);
         contadorArchivo.setDocumento("Oficio");
         contadorArchivoDao.crea(contadorArchivo);
+
+        Rol rol = new Rol("ROLE_USER");
+        rolDao.crea(rol);
+
+        Usuario usuario = new Usuario();
+        usuario.setApMaterno("prueba");
+        usuario.setApPaterno("prueba");
+        usuario.setNombre("samuel");
+        usuario.setCorreo("samuel@pruebas.com");
+        usuario.setPassword("hola");
+        Set rolesUser = new HashSet();
+        rolesUser.add(rolDao.obtiene("ROLE_USER"));
+        usuario.setRoles(rolesUser);
+        usuario.setRoles(rolesUser);
+        usuario.setUsername("sam");
+        usuarioDao.crea(usuario);
     }
 
 }

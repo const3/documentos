@@ -45,7 +45,6 @@ public class Documento implements Serializable {
     private String tipoDocumento;
     private String remitente;
     private String creador;
-    private String autor;
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     private String folio;
@@ -58,11 +57,11 @@ public class Documento implements Serializable {
         return id;
     }
 
-    public Documento(String destinatario, String departamento, String contenido, String autor) {
+    public Documento(String destinatario, String departamento, String contenido, String creador) {
         this.destinatario = destinatario;
         this.departamento = departamento;
         this.contenido = contenido;
-        this.autor = autor;
+        this.creador = creador;
     }
 
     public Integer getVersion() {
@@ -113,14 +112,6 @@ public class Documento implements Serializable {
         this.creador = creador;
     }
 
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
     public Date getFecha() {
         return fecha;
     }
@@ -152,5 +143,12 @@ public class Documento implements Serializable {
     public void setAsunto(String asunto) {
         this.asunto = asunto;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Documento{" + "id=" + id + ", version=" + version + ", destinatario=" + destinatario + ", departamento=" + departamento
+                + ", contenido=" + contenido + ", tipoDocumento=" + tipoDocumento + ", remitente=" + remitente + ", creador=" + creador
+                + ", fecha=" + fecha + ", folio=" + folio + ", asunto=" + asunto + '}';
+    }
+
 }
