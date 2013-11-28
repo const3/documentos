@@ -6,8 +6,10 @@
 package mx.gob.cfe.documentos.dao;
 
 import java.util.Date;
+import java.util.List;
 import mx.gob.cfe.documentos.model.Documento;
 import mx.gob.cfe.documentos.model.Usuario;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -56,6 +58,11 @@ public class UsuarioDao {
     public Usuario obtiene(Long usuarioId) {
         Usuario usuario = (Usuario) currentSession().get(Usuario.class, usuarioId);
         return usuario;
+    }
+
+    public List<Documento> lista() {
+        Query query = currentSession().createQuery("select u from Usuario u order by nombre desc");
+        return query.list();
     }
 
 }

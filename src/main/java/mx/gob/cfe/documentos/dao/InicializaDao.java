@@ -6,6 +6,7 @@
 package mx.gob.cfe.documentos.dao;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -67,18 +68,24 @@ public class InicializaDao {
         contadorArchivo.setDocumento("Oficio");
         contadorArchivoDao.crea(contadorArchivo);
 
-        Rol rol = new Rol("ROLE_USER");
+        Rol rol = new Rol("ROLE_ADMIN");
+        rolDao.crea(rol);
+        rol = new Rol("ROLE_USER");
         rolDao.crea(rol);
 
         Usuario usuario = new Usuario();
         usuario.setApMaterno("prueba");
         usuario.setApPaterno("prueba");
         usuario.setNombre("samuel");
+        usuario.setIniciales("sms");
+        usuario.setPuesto("Jefe");
+        usuario.setPuesto("Principal");
         usuario.setCorreo("samuel@pruebas.com");
         usuario.setPassword("hola");
+        usuario.setFechaAlta(new Date());
         Set rolesUser = new HashSet();
+        rolesUser.add(rolDao.obtiene("ROLE_ADMIN"));
         rolesUser.add(rolDao.obtiene("ROLE_USER"));
-        usuario.setRoles(rolesUser);
         usuario.setRoles(rolesUser);
         usuario.setUsername("sam");
         usuarioDao.crea(usuario);

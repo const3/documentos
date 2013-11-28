@@ -12,7 +12,20 @@
 
     <body>
 
+
         <h1>Documentos CFE</h1>
+        <p class="alert alert-block alert-info"><strong>
+
+                En esta sección del sistema se estarán anunciando los cambio y avances programados.
+                <br/>
+                Agradecemos su paciencia y cooperación.
+                <br/>
+                Esta semana se trabajo en lo que fue:
+                <br/>
+                Usuario, actualmente ya se guardan en una base de datos los usuario con contraseña.
+                <br/>
+                El método para editar los archivos, aun esta en proceso, ya que se esta presentando un pequeño problema al actualizar.
+            </strong></p>
         <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
         <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>
         <script src="<c:url value='/js/i18n/jquery.ui.datepicker-es.min.js' />"></script>

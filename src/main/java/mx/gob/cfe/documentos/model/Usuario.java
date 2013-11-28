@@ -6,6 +6,7 @@
 package mx.gob.cfe.documentos.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -18,6 +19,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -28,7 +31,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,6 +69,11 @@ public class Usuario implements Serializable{
     @NotEmpty
     @Column(nullable = false, name = "correo")
     private String correo;
+    private String puesto;
+    private String iniciales;
+    private String oficina;
+     @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAlta;
 
     public Long getId() {
         return id;
@@ -171,12 +179,42 @@ public class Usuario implements Serializable{
         this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "id=" + id + ", version=" + version + ", username=" + username + ", password=" + password
-                + ", enabled=" + enabled + ", accountExpired=" + accountExpired + ", accountLocked=" + accountLocked
-                + ", credentialsExpired=" + credentialsExpired + ", nombre=" + nombre + ", apPaterno=" + apPaterno
-                + ", apMaterno=" + apMaterno + ", roles=" + roles + ", correo=" + correo + '}';
+    public String getPuesto() {
+        return puesto;
     }
 
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
+    public String getIniciales() {
+        return iniciales;
+    }
+
+    public void setIniciales(String iniciales) {
+        this.iniciales = iniciales;
+    }
+
+    public String getOficina() {
+        return oficina;
+    }
+
+    public void setOficina(String oficina) {
+        this.oficina = oficina;
+    }
+    
+    public Date getFechaAlta() {
+        return fechaAlta;
+    }
+
+    public void setFechaAlta(Date fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", version=" + version + ", username=" + username + ", password=" + password + ", enabled=" + enabled + ", accountExpired=" + accountExpired + ", accountLocked=" + accountLocked + ", credentialsExpired=" + credentialsExpired + ", nombre=" + nombre + ", apPaterno=" + apPaterno + ", apMaterno=" + apMaterno + ", roles=" + roles + ", correo=" + correo + ", puesto=" + puesto + ", iniciales=" + iniciales + ", oficina=" + oficina + ", fechaAlta=" + fechaAlta + '}';
+    }
+
+    
 }

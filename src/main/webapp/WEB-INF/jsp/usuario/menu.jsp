@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>CFE</title>
         <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css' />" type="text/css" />
-        <link rel="stylesheet" href="<c:url value='/css/bootstrap-theme.min.css' />" type="text/css" /> 
+        <link rel="stylesheet" href="<c:url value='/css/bootstrap-responsive.min.css' />" type="text/css" /> 
         <link rel="shortcut icon" href="<c:url value='/images/cfe.png' />" type="image/x-icon" />
 
     </head>
@@ -25,15 +25,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <div nav nav-pills>
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="<c:url value='/'/>">Inicio</a> </li>
+                <div nav nav-tabs>
+                    <ul class="nav nav-tabs">
+                        <li class="brand"><a href="<c:url value='/'/>">Inicio</a> </li>
 
-                        <li class="brand "><a href="<c:url value='/usuario'/>">Usuarios</a> </li>
+                        <li class="active"><a href="<c:url value='/usuario'/>">Usuarios</a> </li>
 
                         <!--Dropdown -->
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archivos <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archivos <b ></b></a>
+                            <!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                 Documentos <span class="caret"></span>
+                             </a> -->
                             <ul class="dropdown-menu" role="menu">
                                 <li> <a href="<c:url value='/documento'/>">Documentos </a></li>
                                 <li> <a href="<c:url value='/circular'/>">Circulares </a></li>
