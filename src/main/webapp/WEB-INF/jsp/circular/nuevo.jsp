@@ -72,14 +72,6 @@
                             <form:textarea path="contenido" maxlength="8000" required="true" cssClass="span6" cssStyle="height: 400px;"/>
                         </div>
                     </s:bind>
-                    <s:bind path="circular.creador">
-                        <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
-                                <label for="creador">
-                                    Autor<span class="required-indicator">*</span>
-                                </label>
-                            <form:input path="creador" maxlength="128" required="true" />
-                        </div>
-                    </s:bind>
                     <s:bind path="circular.asunto">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
                                 <label for="asunto">

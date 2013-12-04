@@ -7,6 +7,7 @@ package mx.gob.cfe.documentos.web;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import mx.gob.cfe.documentos.dao.DocumentoDao;
+import mx.gob.cfe.documentos.dao.UsuarioDao;
 import mx.gob.cfe.documentos.model.Documento;
+import mx.gob.cfe.documentos.model.Usuario;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -53,13 +56,17 @@ public class DocumentoController {
 
     @Autowired
     private DocumentoDao instance;
+    @Autowired
+    private UsuarioDao usuarioDao;
 
     @RequestMapping
-    public String lista(Model model) {
-        model.addAttribute("documentos", instance.lista("Documento"));
-        List lista = instance.lista("Documento");
-        log.debug("lista{}", lista);
-        return "documento/lista";
+    public String lista(Model model, Principal principal) {
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+        model.addAttribute("documentos", instance.lista("Documento", usuario.getIniciales()));
+        List lista = instance.lista("Documento", usuario.getIniciales());
+        log.error("lista{}", lista);
+        return "documentos/lista";
     }
 
     @RequestMapping("/nuevo")
@@ -69,10 +76,13 @@ public class DocumentoController {
     }
 
     @RequestMapping("/crea")
-    public String crea(@Valid Documento documento, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model) {
+    public String crea(@Valid Documento documento, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model,
+            Principal principal) {
         if (bindingResult.hasErrors()) {
             return "documento/nuevo";
         }
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
         Calendar calendar = GregorianCalendar.getInstance();
         int año = calendar.get(Calendar.YEAR);
         int mes = calendar.get(Calendar.MONTH);
@@ -80,6 +90,7 @@ public class DocumentoController {
         int añoFuente = 1954;
         int resta = año - añoFuente;
         documento.setTipoDocumento("Documento");
+        documento.setCreador(usuario.getIniciales());
         documento = instance.crea(documento);
         String consecutivo = documento.getDepartamento() + ":" + String.valueOf(resta) + "-" + documento.getId().toString() + "/" + String.valueOf(año);
         documento.setFolio(consecutivo);

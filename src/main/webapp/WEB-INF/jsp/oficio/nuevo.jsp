@@ -72,15 +72,14 @@
                             <form:textarea path="contenido"  required="true"  cssClass="span6" cssStyle="height: 400px;"/>
                         </div>
                     </s:bind>
-                    <s:bind path="oficio.creador">
+                    <s:bind path="oficio.asunto">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
-                                <label for="creador">
-                                    Autor<span class="required-indicator">*</span>
+                                <label for="asunto">
+                                    Asunto<span class="required-indicator">*</span>
                                 </label>
-                            <form:input path="creador" maxlength="128" required="true" />
+                            <form:input path="asunto" maxlength="128" required="true" />
                         </div>
                     </s:bind>
-
                 </div>
                 <p class="well" style="margin-top: 10px;">
                     <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Crear Documento</button>

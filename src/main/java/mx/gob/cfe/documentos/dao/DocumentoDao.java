@@ -61,9 +61,10 @@ public class DocumentoDao {
         return articulo;
     }
 
-    public List<Documento> lista(String tipoArchivo) {
-        Query query = currentSession().createQuery("select a from Documento a where a.tipoDocumento =:tipoArchivo order by fecha desc");
+    public List<Documento> lista(String tipoArchivo, String creador) {
+        Query query = currentSession().createQuery("select a from Documento a where a.tipoDocumento =:tipoArchivo and a.creador=:creador order by fecha desc");
         query.setString("tipoArchivo", tipoArchivo);
+        query.setString("creador", creador);
         return query.list();
     }
 }

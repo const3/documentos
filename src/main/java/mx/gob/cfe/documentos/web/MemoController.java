@@ -7,6 +7,7 @@ package mx.gob.cfe.documentos.web;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -17,9 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import mx.gob.cfe.documentos.dao.ContadorArchivoDao;
 import mx.gob.cfe.documentos.dao.DocumentoDao;
+import mx.gob.cfe.documentos.dao.UsuarioDao;
 import mx.gob.cfe.documentos.model.ContadorArchivo;
 import mx.gob.cfe.documentos.model.Documento;
 import mx.gob.cfe.documentos.model.Memo;
+import mx.gob.cfe.documentos.model.Usuario;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -54,11 +57,15 @@ public class MemoController {
     private DocumentoDao instance;
     @Autowired
     private ContadorArchivoDao contadorDao;
+    @Autowired
+    private UsuarioDao usuarioDao;
 
     @RequestMapping
-    public String lista(Model model) {
-        model.addAttribute("memos", instance.lista("Memo"));
-        List lista = instance.lista("Memo");
+    public String lista(Model model, Principal principal) {
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+        model.addAttribute("memos", instance.lista("Memo", usuario.getIniciales()));
+        List lista = instance.lista("Memo", usuario.getIniciales());
         log.error("lista{}", lista);
         return "memo/lista";
     }
@@ -70,10 +77,14 @@ public class MemoController {
     }
 
     @RequestMapping("/crea")
-    public String crea(@Valid Memo memo, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model) {
+    public String crea(@Valid Memo memo, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model,
+            Principal principal) {
         if (bindingResult.hasErrors()) {
             return "memo/nuevo";
         }
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+        memo.setCreador(usuario.getIniciales());
         ContadorArchivo contadorArchivo = contadorDao.obtiene("Memo");
         int cosecutivo = contadorArchivo.getContador();
         log.debug("consecutivo{}", cosecutivo);

@@ -7,6 +7,7 @@ package mx.gob.cfe.documentos.web;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -17,9 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import mx.gob.cfe.documentos.dao.ContadorArchivoDao;
 import mx.gob.cfe.documentos.dao.DocumentoDao;
+import mx.gob.cfe.documentos.dao.UsuarioDao;
 import mx.gob.cfe.documentos.model.ContadorArchivo;
 import mx.gob.cfe.documentos.model.Documento;
 import mx.gob.cfe.documentos.model.Oficio;
+import mx.gob.cfe.documentos.model.Usuario;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -54,12 +57,16 @@ public class OficioController {
     private DocumentoDao instance;
     @Autowired
     private ContadorArchivoDao contadorDao;
+    @Autowired
+    private UsuarioDao usuarioDao;
 
     @RequestMapping
-    public String lista(Model model) {
-        model.addAttribute("oficios", instance.lista("Oficio"));
-        List lista = instance.lista("Oficio");
-        log.debug("lista{}", lista);
+    public String lista(Model model, Principal principal) {
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+        model.addAttribute("oficios", instance.lista("Oficio", usuario.getIniciales()));
+        List lista = instance.lista("Oficio", usuario.getIniciales());
+        log.error("lista{}", lista);
         return "oficio/lista";
     }
 
@@ -70,10 +77,14 @@ public class OficioController {
     }
 
     @RequestMapping("/crea")
-    public String crea(@Valid Oficio oficio, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model) {
+    public String crea(@Valid Oficio oficio, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model,
+            Principal principal) {
         if (bindingResult.hasErrors()) {
             return "oficio/nuevo";
         }
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+        oficio.setCreador(usuario.getIniciales());
         ContadorArchivo contadorArchivo = contadorDao.obtiene("Oficio");
         int cosecutivo = contadorArchivo.getContador();
         Calendar calendar = GregorianCalendar.getInstance();

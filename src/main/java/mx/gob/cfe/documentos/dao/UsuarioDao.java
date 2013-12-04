@@ -65,4 +65,10 @@ public class UsuarioDao {
         return query.list();
     }
 
+    public Usuario obtinePorUsername(String username) {
+        Query query = currentSession().createQuery("select u from Usuario u where u.username=:username ");
+        query.setString("username", username);
+        return (Usuario) query.uniqueResult();
+    }
+
 }
