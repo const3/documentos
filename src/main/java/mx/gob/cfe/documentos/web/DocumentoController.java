@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Enumeration;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -66,7 +67,7 @@ public class DocumentoController {
         model.addAttribute("documentos", instance.lista("Documento", usuario.getIniciales()));
         List lista = instance.lista("Documento", usuario.getIniciales());
         log.error("lista{}", lista);
-        return "documentos/lista";
+        return "documento/lista";
     }
 
     @RequestMapping("/nuevo")
@@ -76,11 +77,12 @@ public class DocumentoController {
     }
 
     @RequestMapping("/crea")
-    public String crea(@Valid Documento documento, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model,
+    public String crea(HttpServletRequest request, @Valid Documento documento, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model,
             Principal principal) {
         if (bindingResult.hasErrors()) {
             return "documento/nuevo";
         }
+
         String username = principal.getName();
         Usuario usuario = usuarioDao.obtinePorUsername(username);
         Calendar calendar = GregorianCalendar.getInstance();
@@ -114,7 +116,7 @@ public class DocumentoController {
     }
 
     @RequestMapping(value = "/actualiza", method = RequestMethod.POST)
-    public String actualiza(@Valid Documento documento, HttpServletRequest request, BindingResult bindingResult, Errors errors,
+    public String actualiza(HttpServletRequest request, @Valid Documento documento, BindingResult bindingResult, Errors errors,
             Model modelo, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             log.error("Hubo algun error en la forma, regresando");
@@ -125,6 +127,12 @@ public class DocumentoController {
             return "documento/edita";
         }
         try {
+            Enumeration<String> values = request.getParameterNames();
+            do {
+                log.debug("namesparameter{}", values.nextElement());
+            } while (values.hasMoreElements());
+            String id = request.getParameter("id");
+            log.debug("parameter{}id", id);
             log.debug("documento{}id", documento.getId());
             log.debug("documento{}", documento.toString());
             documento = instance.actualiza(documento);

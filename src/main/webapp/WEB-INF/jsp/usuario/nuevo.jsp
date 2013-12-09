@@ -104,20 +104,17 @@
                 </s:bind>
 
                 <p class="well" style="margin-top: 10px;">
-                    <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i><span class="icon-white icon-check-empty"></span></i>&nbsp;Crear Documento</button>
-                    <a class="btn btn-danger " href="<s:url value='/usuario'/>"><i class="icon-white icon-stop"></i> Cancelar </a>
+                    <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i><span class="icon-white icon-check"></span></i>&nbsp;Crear Usuario</button>
+                    <a class="btn btn-danger " href="<s:url value='/usuario'/>"><i class="icon-white icon-eject"></i> Cancelar </a>
                 </p>
             </fieldset>
         </form:form>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
-    <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>
-    <script src="<c:url value='/js/i18n/jquery.ui.datepicker-es.min.js' />"></script>
-    <script src="<c:url value='/js/bootstrap.min.js' />"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("input#username").focus();
-        });
-    </script>
-</body>
+
+        <script src="<c:url value='/js/bootstrap.min.js' />"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("input#username").focus();
+            });
+        </script>
+    </body>
 </html>

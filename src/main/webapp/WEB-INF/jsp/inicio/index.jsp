@@ -11,24 +11,27 @@
     <jsp:include page="../menu.jsp"/>
 
     <body>
+        <br>
+        <div class="container">
+
+            <!-- Main hero unit for a primary marketing message or call to action -->
+            <div class="hero-unit">
+                <h1>Hola</h1>
+                <p>En esta parte del sistema se le estara avisando de los cambios y modificaciones hechos recientemente.</p>
+
+            </div>
 
 
-        <h1>Documentos CFE</h1>
-        <p class="alert alert-block alert-info"><strong>
 
-                En esta sección del sistema se estarán anunciando los cambio y avances programados.
-                <br/>
-                Agradecemos su paciencia y cooperación.
-                <br/>
-                Esta semana se trabajo en lo que fue:
-                <br/>
-                Usuario, actualmente ya se guardan en una base de datos los usuario con contraseña.
-                <br/>
-                El método para editar los archivos, aun esta en proceso, ya que se esta presentando un pequeño problema al actualizar.
-            </strong></p>
-        <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
-        <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>
-        <script src="<c:url value='/js/i18n/jquery.ui.datepicker-es.min.js' />"></script>
+            <hr>
+
+            <footer>
+                <p>© Company 2013</p>
+            </footer>
+
+        </div>
+
+        <script src="<c:url value='/js/jquery-2.0.3.min.js' />"></script>
         <script src="<c:url value='/js/bootstrap.min.js' />"></script>
     </body>
 
