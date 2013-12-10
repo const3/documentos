@@ -73,6 +73,12 @@ public class DocumentoDao {
         return query.list();
     }
 
+    public List<Documento> listaReporte(String creador) {
+        Query query = currentSession().createQuery("select a from Documento a where a.creador=:creador  order by fecha desc");
+        query.setString("creador", creador);
+        return query.list();
+    }
+
     public List<Documento> listaEnviados(String departamento) {
         String statusENV = "ENV";
         Query query = currentSession().createQuery("select a from Documento a where a.status =:statusENV "

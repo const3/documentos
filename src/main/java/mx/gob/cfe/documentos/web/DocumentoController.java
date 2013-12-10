@@ -36,6 +36,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -69,7 +70,18 @@ public class DocumentoController {
         log.error("lista{}", lista);
         return "documento/lista";
     }
-     @RequestMapping("/enviados")
+
+    @RequestMapping("/reporte")
+    public String reporte(Model model, Principal principal) {
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+        model.addAttribute("documentos", instance.listaReporte(usuario.getIniciales()));
+        List lista = instance.listaReporte(usuario.getIniciales());
+        log.error("lista{}", lista);
+        return "documento/reporte";
+    }
+
+    @RequestMapping("/enviados")
     public String listaEnviados(Model model, Principal principal) {
         String username = principal.getName();
         Usuario usuario = usuarioDao.obtinePorUsername(username);
@@ -124,6 +136,7 @@ public class DocumentoController {
         return "documento/edita";
     }
 
+    @Transactional
     @RequestMapping(value = "/actualiza", method = RequestMethod.POST)
     public String actualiza(HttpServletRequest request, @Valid Documento documento, BindingResult bindingResult, Errors errors,
             Model modelo, RedirectAttributes redirectAttributes) {
