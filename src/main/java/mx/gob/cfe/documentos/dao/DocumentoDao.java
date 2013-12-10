@@ -62,9 +62,31 @@ public class DocumentoDao {
     }
 
     public List<Documento> lista(String tipoArchivo, String creador) {
-        Query query = currentSession().createQuery("select a from Documento a where a.tipoDocumento =:tipoArchivo and a.creador=:creador order by fecha desc");
+        String statusA = "A";
+        String statusAUT = "AUT";
+        Query query = currentSession().createQuery("select a from Documento a where a.tipoDocumento =:tipoArchivo and a.creador=:creador "
+                + "and a.status =:statusA OR a.status=:statusAUT order by fecha desc");
         query.setString("tipoArchivo", tipoArchivo);
         query.setString("creador", creador);
+        query.setString("statusA", statusA);
+        query.setString("statusAUT", statusAUT);
+        return query.list();
+    }
+
+    public List<Documento> listaEnviados(String departamento) {
+        String statusENV = "ENV";
+        Query query = currentSession().createQuery("select a from Documento a where a.status =:statusENV "
+                + "and a.departamento=:departamento order by fecha desc");
+        query.setString("departamento", departamento);
+        query.setString("statusENV", statusENV);
+        return query.list();
+    }
+
+    public List<Documento> listaRecividos(String departamento) {
+        Query query = currentSession().createQuery("select a from Documento a where a.status =:status and a.departamento:departamento "
+                + "order by fecha desc");
+        query.setString("status", "REC");
+        query.setString("departamento", departamento);
         return query.list();
     }
 }

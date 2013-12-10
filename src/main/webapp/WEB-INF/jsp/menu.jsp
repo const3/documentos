@@ -26,7 +26,7 @@
                     <a class="brand" href="<c:url value='/'/>">Inicio</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="<c:url value='/usuario'/>">Usuarios</a></li>
+                            <li ><a href="<c:url value='/usuario'/>">Usuarios</a></li>
                             <!--Dropdown -->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archivos <b class="caret"></b></a>
@@ -38,6 +38,7 @@
                                     <li> <a href="<c:url value='/oficio'/>">Oficios</a></li>
                                 </ul>
                             </li>
+                            <li ><a href="<c:url value='/documento/enviados'/>">Documentos Compartidos</a></li>
                         </ul>
 
 

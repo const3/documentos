@@ -43,6 +43,7 @@ public class Documento implements Serializable {
     @Column(length = 8000)
     private String contenido;
     private String tipoDocumento;
+    private String status;
     private String remitente;
     private String creador;
     @Temporal(TemporalType.TIMESTAMP)
@@ -144,11 +145,19 @@ public class Documento implements Serializable {
         this.asunto = asunto;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Documento{" + "id=" + id + ", version=" + version + ", destinatario=" + destinatario + ", departamento=" + departamento
-                + ", contenido=" + contenido + ", tipoDocumento=" + tipoDocumento + ", remitente=" + remitente + ", creador=" + creador
-                + ", fecha=" + fecha + ", folio=" + folio + ", asunto=" + asunto + '}';
+                + ", contenido=" + contenido + ", tipoDocumento=" + tipoDocumento + ", status=" + status + ", remitente=" + remitente
+                + ", creador=" + creador + ", fecha=" + fecha + ", folio=" + folio + ", asunto=" + asunto + '}';
     }
 
 }

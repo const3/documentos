@@ -94,6 +94,7 @@ public class CircularController {
         int añoFuente = 1954;
         int resta = año - añoFuente;
         circular.setCreador(usuario.getIniciales());
+        circular.setStatus("A");
         circular.setConsecutivo(cosecutivo);
         circular.setTipoDocumento("Circular");
         int cosecutivo2 = cosecutivo + 1;
@@ -118,6 +119,22 @@ public class CircularController {
     public String elimina(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
         String titulo = instance.elimina(id);
         redirectAttributes.addFlashAttribute("mensaje", "Se elimino el documento " + titulo);
+        return "redirect:/circular";
+    }
+
+    @RequestMapping("/envia/{id}")
+    public String envia(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+        Circular circular = (Circular) instance.obtiene(id);
+        circular.setStatus("ENV");
+        instance.actualiza(circular);
+        return "redirect:/circular";
+    }
+
+    @RequestMapping("/autoriza/{id}")
+    public String autoriza(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+        Circular circular = (Circular) instance.obtiene(id);
+        circular.setStatus("AUT");
+        instance.actualiza(circular);
         return "redirect:/circular";
     }
 

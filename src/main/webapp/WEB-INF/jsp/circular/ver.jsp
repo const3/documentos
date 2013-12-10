@@ -17,6 +17,7 @@
             <div class="well">
                 <a href="<c:url value="/circular"/>" class="btn btn-primary"><i class="icon-list icon-white" ></i>Documentos </a>
                 <a href="<c:url value="/circular/nuevo"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Nuevo</a>
+                <a href="<c:url value="/circular/autoriza/${circular.id}"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Autorizar</a>
 
             </div>
 
@@ -57,12 +58,12 @@
 
 
             <div class="well"> 
+                <a href="<c:url value="/circular/envia/${circular.id}"/>" class="btn btn-danger" ><i class="icon-trash icon-white" ></i>Envia</a>
                 <a href="<c:url value="/circular/elimina/${circular.id}"/>" class="btn btn-danger" onclick="return confirm('¿Seguro que quiere eliminar el documento ${documento.folio}?');"><i class="icon-trash icon-white" ></i>Eliminar</a>
                 <a href="<c:url value="/circular/download/${circular.id}"/>" class="btn btn-success" ><i class="icon-ok icon-white " ></i>Descargar</a>
             </div>
-            <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
-            <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>
-            <script src="<c:url value='/js/i18n/jquery.ui.datepicker-es.min.js' />"></script>
+            <script src="<c:url value='/js/jquery-2.0.3.min.js' />"></script>
+
             <script src="<c:url value='/js/bootstrap.min.js' />"></script>
         </body>
     </div>

@@ -79,7 +79,7 @@ public class InicializaDao {
         usuario.setNombre("samuel");
         usuario.setIniciales("sms");
         usuario.setPuesto("Jefe");
-        usuario.setPuesto("Principal");
+        usuario.setOficina("DA");
         usuario.setCorreo("samuel@pruebas.com");
         usuario.setPassword("hola");
         usuario.setFechaAlta(new Date());

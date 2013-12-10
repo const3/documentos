@@ -69,6 +69,15 @@ public class DocumentoController {
         log.error("lista{}", lista);
         return "documento/lista";
     }
+     @RequestMapping("/enviados")
+    public String listaEnviados(Model model, Principal principal) {
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+        model.addAttribute("circulares", instance.listaEnviados(usuario.getOficina()));
+        List lista = instance.listaEnviados(usuario.getOficina());
+        log.error("lista{}", lista);
+        return "documento/enviados";
+    }
 
     @RequestMapping("/nuevo")
     public String nuevo(Model model) {
