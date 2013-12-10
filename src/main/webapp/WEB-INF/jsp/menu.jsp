@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css' />" type="text/css" />
         <link rel="stylesheet" href="<c:url value='/css/bootstrap-responsive.min.css' />" type="text/css" /> 
         <link rel="shortcut icon" href="<c:url value='/images/cfe.png' />" type="image/x-icon" />
-        <title>Usuarios</title>
+        <title>Inicio</title>
     </head>
 
     <body style="">
@@ -42,7 +42,7 @@
 
 
                         <p class="navbar-text pull-right">
-                            Logged in as <a href="#" class="navbar-link">Username</a>
+                            <%= request.getUserPrincipal().getName()%> en sesión <a href="<c:url value="/j_spring_security_logout" />" > Salir</a>
                         </p>
                     </div><!--/.nav-collapse -->
                 </div>

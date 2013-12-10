@@ -26,7 +26,7 @@
             <hr>
 
             <footer>
-                <p>© Company 2013</p>
+                <p>© CFE 2013</p>
             </footer>
 
         </div>
