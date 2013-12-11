@@ -21,6 +21,7 @@ import mx.gob.cfe.documentos.dao.DocumentoDao;
 import mx.gob.cfe.documentos.dao.UsuarioDao;
 import mx.gob.cfe.documentos.model.ContadorArchivo;
 import mx.gob.cfe.documentos.model.Documento;
+import mx.gob.cfe.documentos.model.Memo;
 import mx.gob.cfe.documentos.model.MemoInter;
 import mx.gob.cfe.documentos.model.Usuario;
 import net.sf.jasperreports.engine.JRException;
@@ -112,6 +113,22 @@ public class MemoInterController {
     public String ver(@PathVariable Long id, Model model) {
         model.addAttribute("memoInter", instance.obtiene(id));
         return "memoInter/ver";
+    }
+
+    @RequestMapping("/envia/{id}")
+    public String envia(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+        MemoInter memoInter = (MemoInter) instance.obtiene(id);
+        memoInter.setStatus("ENV");
+        instance.actualiza(memoInter);
+        return "redirect:/memoInter";
+    }
+
+    @RequestMapping("/autoriza/{id}")
+    public String autoriza(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+        Memo memo = (Memo) instance.obtiene(id);
+        memo.setStatus("AUT");
+        instance.actualiza(memo);
+        return "redirect:/memoInter";
     }
 
     @RequestMapping("/eliminar/{id}")

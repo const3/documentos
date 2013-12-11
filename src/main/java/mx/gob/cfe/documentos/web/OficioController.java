@@ -111,6 +111,22 @@ public class OficioController {
         return "oficio/ver";
     }
 
+    @RequestMapping("/envia/{id}")
+    public String envia(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+        Oficio oficio = (Oficio) instance.obtiene(id);
+        oficio.setStatus("ENV");
+        instance.actualiza(oficio);
+        return "redirect:/oficio";
+    }
+
+    @RequestMapping("/autoriza/{id}")
+    public String autoriza(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+        Oficio oficio = (Oficio) instance.obtiene(id);
+        oficio.setStatus("AUT");
+        instance.actualiza(oficio);
+        return "redirect:/oficio";
+    }
+
     @RequestMapping("/elimina/{id}")
     public String elimina(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
         String titulo = instance.elimina(id);
