@@ -41,14 +41,22 @@
         </style>
     </head>
     <body>
+
         <div class="container">
+
             <form class="form-signin" name='f' action="<c:url value='j_spring_security_check' />"
                   method='POST' class='cssform' autocomplete='off'>
                 <h2 class="form-signin-heading">Favor de identificarse</h2>
+                <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}">
+                    <p style="color:red;padding: 0 10px 10px 0;">
+                        <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+                    </p>
+                </c:if>
                 <input type="text" class="input-block-level" placeholder="RPE" name='j_username'>
                 <input type="password" class="input-block-level" placeholder="Contraseña" name='j_password'>
                 <label class="checkbox">
-                    <input type="checkbox" value="remember-me"> Recordarme?
+                    <input type='checkbox' class='chk' name='_spring_security_remember_me' id='remember_me' />
+                    ¿Recordarme?
                 </label>
                 <button class="btn btn-large btn-primary" type="submit" >Entrar</button>
             </form>

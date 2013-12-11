@@ -176,14 +176,15 @@ public class DocumentoController {
     }
 
     @RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
-    public String getDownloadPage(@PathVariable Long id, HttpServletResponse response) throws JRException, IOException {
+    public String getDownloadPage(@PathVariable Long id, HttpServletResponse response, Principal principal) throws JRException, IOException {
         log.debug("Received request to show download page");
-        Documento documento = instance.obtiene(id);
-        List<Documento> documentos = new ArrayList<>();
-        documentos.add(documento);
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+
+        List<Documento> documentos = instance.listaReporte(usuario.getIniciales());
         generaReporte("PDF", documentos, response);
 
-        return "redirect:/documento";
+        return "redirect:/documento/reporte";
     }
 
     private void generaReporte(String tipo, List<Documento> documentos, HttpServletResponse response) throws JRException, IOException {

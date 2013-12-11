@@ -9,39 +9,41 @@
 <html>
     <jsp:include page="../menu.jsp"/>
 
-    <body class="span12">
-        <h1>Lista de Circulares</h1>
-        <div class="well">
-            <a href="<c:url value="/circular/nuevo"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Nuevo</a>
-        </div>
-        <table id="lista" class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Destinatario</th>
-                    <th>Departamento</th>
-                    <th>Contenido</th>
-                    <th>Remitente</th>
-                    <th>Creador</th>
-                    <th>Folio</th>
-                    <th>Asunto</th></tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${circulares}" var="circular">
+    <body >
+        <div class="container-fluid">
+            <h1>Lista de Circulares</h1>
+            <div class="well">
+                <a href="<c:url value="/circular/nuevo"/>" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Nuevo</a>
+            </div>
+            <table id="lista" class="table table-striped">
+                <thead>
                     <tr>
-                        <td><a href="<c:url value="/circular/ver/${circular.id}"/>"><fmt:formatDate value="${circular.fecha}" pattern="yyyy-MM-dd" /> </a></td>
-                        <td>${circular.destinatario}</td>
-                        <td>${circular.departamento}</td>
-                        <td >${circular.contenido}</td>
-                        <td>${circular.remitente}</td>
-                        <td>${circular.creador}</td>
-                        <td>${circular.folio}</td>
-                        <td>${circular.asunto}</td>
-                    </tr>
-                </c:forEach> 
-            </tbody>
+                        <th>Fecha</th>
+                        <th>Destinatario</th>
+                        <th>Departamento</th>
+                        <th>Contenido</th>
+                        <th>Remitente</th>
+                        <th>Creador</th>
+                        <th>Folio</th>
+                        <th>Asunto</th></tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${circulares}" var="circular">
+                        <tr>
+                            <td><a href="<c:url value="/circular/ver/${circular.id}"/>"><fmt:formatDate value="${circular.fecha}" pattern="yyyy-MM-dd" /> </a></td>
+                            <td>${circular.destinatario}</td>
+                            <td>${circular.departamento}</td>
+                            <td >${circular.contenido}</td>
+                            <td>${circular.remitente}</td>
+                            <td>${circular.creador}</td>
+                            <td>${circular.folio}</td>
+                            <td>${circular.asunto}</td>
+                        </tr>
+                    </c:forEach> 
+                </tbody>
 
-        </table>
+            </table>
+        </div>
         <script src="<c:url value='/js/jquery-2.0.3.min.js' />"></script>
         <script src="<c:url value='/js/bootstrap.min.js' />"></script>
     </body>

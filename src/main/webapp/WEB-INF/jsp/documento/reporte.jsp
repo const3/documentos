@@ -9,38 +9,36 @@
 <html>
     <jsp:include page="../menu.jsp"/>
 
-    <body class="span12">
-        <h1>Lista de Documentos</h1>
-        <div class="well">
-            <a href="<c:url value="/documento/nuevo"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Nuevo</a>
-        </div>
-        <table id="lista" class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Destinatario</th>
-                    <th>Departamento</th>
-                    <th>Contenido</th>
-                    <th>Remitente</th>
-                    <th>Creador</th>
-                    <th>Folio</th></tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${documentos}" var="documento">
+    <body >
+        <div class="container-fluid">
+            <h1>Lista de Documentos</h1>
+            <table id="lista" class="table table-striped">
+                <thead>
                     <tr>
-                        <td><a href="<c:url value="/documento/ver/${documento.id}"/>"><fmt:formatDate value="${documento.fecha}" pattern="yyyy-MM-dd" /> </a></td>
-                        <td>${documento.destinatario}</td>
-                        <td>${documento.departamento}</td>
-                        <td>${documento.contenido}</td>
-                        <td>${documento.remitente}</td>
-                        <td>${documento.creador}</td>
-                        <td>${documento.folio}</td>
-                        <td><a href="<c:url value="/documento/edita/${documento.id}"/>">Editar </a></td>
-                    </tr>
-                </c:forEach> 
-            </tbody>
+                        <th>Fecha</th>
+                        <th>Destinatario</th>
+                        <th>Departamento</th>
+                        <th>Contenido</th>
+                        <th>Remitente</th>
+                        <th>Creador</th>
+                        <th>Folio</th></tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${documentos}" var="documento">
+                        <tr>
+                            <td><a href="<c:url value="/documento/ver/${documento.id}"/>"><fmt:formatDate value="${documento.fecha}" pattern="yyyy-MM-dd" /> </a></td>
+                            <td>${documento.destinatario}</td>
+                            <td>${documento.departamento}</td>
+                            <td>${documento.contenido}</td>
+                            <td>${documento.remitente}</td>
+                            <td>${documento.creador}</td>
+                            <td>${documento.folio}</td>
+                        </tr>
+                    </c:forEach> 
+                </tbody>
 
-        </table>
+            </table>
+        </div>
         <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
         <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>
         <script src="<c:url value='/js/i18n/jquery.ui.datepicker-es.min.js' />"></script>

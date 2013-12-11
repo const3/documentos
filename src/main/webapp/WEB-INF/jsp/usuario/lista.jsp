@@ -11,37 +11,39 @@
 
     <body >
         <h1>Lista de Usuarios</h1>
-        <div class="well-small">
-            <a href="<c:url value="/usuario/nuevo"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Nuevo</a>
-        </div>
-        <table id="lista" class="table table-striped well-small">
-            <thead>
-                <tr>
-                    <th>RPE</th>
-                    <th>Nombre</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
-                    <th>Correo</th>
-                    <th>Puesto</th>
-                    <th>Oficina</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${usuarios}" var="usuario">
+        <div class="container-fluid">
+            <div class="well">
+                <a href="<c:url value="/usuario/nuevo"/>" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Nuevo</a>
+            </div>
+
+            <table id="lista" class="table table-striped well-small">
+                <thead>
                     <tr>
-                        <td><a href="<c:url value="/usuario/ver/${usuario.id}"/>">${usuario.username}</a></td>
-                        <td>${usuario.nombre}</td>
-                        <td>${usuario.apPaterno}</td>
-                        <td>${usuario.apMaterno}</td>
-                        <td>${usuario.correo}</td>
-                        <td>${usuario.puesto}</td>
-                        <td>${usuario.oficina}</td>
+                        <th>RPE</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Correo</th>
+                        <th>Puesto</th>
+                        <th>Oficina</th>
                     </tr>
-                </c:forEach> 
-            </tbody>
+                </thead>
+                <tbody>
+                    <c:forEach items="${usuarios}" var="usuario">
+                        <tr>
+                            <td><a href="<c:url value="/usuario/ver/${usuario.id}"/>">${usuario.username}</a></td>
+                            <td>${usuario.nombre}</td>
+                            <td>${usuario.apPaterno}</td>
+                            <td>${usuario.apMaterno}</td>
+                            <td>${usuario.correo}</td>
+                            <td>${usuario.puesto}</td>
+                            <td>${usuario.oficina}</td>
+                        </tr>
+                    </c:forEach> 
+                </tbody>
 
-        </table>
-
+            </table>
+        </div>
         <script src="<c:url value='/js/bootstrap.min.js' />"></script>
     </body>
 </html>

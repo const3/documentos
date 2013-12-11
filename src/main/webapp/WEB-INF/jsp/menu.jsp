@@ -6,6 +6,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="s"   uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html lang="en"><head>
 
         <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css' />" type="text/css" />
@@ -26,7 +27,9 @@
                     <a class="brand" href="<c:url value='/'/>">Inicio</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li ><a href="<c:url value='/usuario'/>">Usuarios</a></li>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <li ><a href="<c:url value='/usuario'/>">Usuarios</a></li>
+                                </sec:authorize>
                             <!--Dropdown -->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archivos <b class="caret"></b></a>
@@ -36,6 +39,8 @@
                                     <li> <a href="<c:url value='/memo'/>">Memos</a></li>
                                     <li> <a href="<c:url value='/memoInter'/>">Memos Inter</a></li>
                                     <li> <a href="<c:url value='/oficio'/>">Oficios</a></li>
+                                    <li class="divider"></li>
+                                    <li> <a href="<c:url value='/documento/reporte'/>">Reporte</a></li>
                                 </ul>
                             </li>
                             <li ><a href="<c:url value='/documento/enviados'/>">Documentos Compartidos</a></li>
@@ -43,7 +48,7 @@
 
 
                         <p class="navbar-text pull-right">
-                            <%= request.getUserPrincipal().getName()%> en sesión <a href="<c:url value="/j_spring_security_logout" />" > Salir</a>
+                            <%= request.getUserPrincipal().getName()%> en sesión  <a onclick="return confirm('¿Desea salir?');" href="<c:url value="/j_spring_security_logout" />"><i class="icon-white icon-off"></i>Salir</a>
                         </p>
                     </div><!--/.nav-collapse -->
                 </div>

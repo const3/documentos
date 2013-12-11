@@ -12,7 +12,7 @@
 
     <body>
         <br>
-        <div class="container">
+        <div class="container-fluid">
 
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
@@ -26,7 +26,7 @@
             <hr>
 
             <footer>
-                <p>© CFE 2013</p>
+                <p>©  CFE 2013</p>
             </footer>
 
         </div>
