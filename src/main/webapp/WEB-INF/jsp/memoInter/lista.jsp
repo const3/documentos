@@ -9,10 +9,10 @@
 <html>
     <jsp:include page="../menu.jsp"/>
 
-    <body class="span13">
+    <body class="container-fluid">
         <h1>Lista de Circulares</h1>
         <div class="well">
-            <a href="<c:url value="/memoInter/nuevo"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Nuevo</a>
+            <a href="<c:url value="/memoInter/nuevo"/>" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Nuevo</a>
         </div>
         <table id="lista" class="table table-striped">
             <thead>

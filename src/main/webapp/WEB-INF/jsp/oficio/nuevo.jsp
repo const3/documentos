@@ -10,7 +10,7 @@
 <html>
     <jsp:include page="../menu.jsp"/>
     <body class="span12">
-        <h1>Nuevo Documento</h1>
+        <h1>Nueva Oficio</h1>
 
 
         <c:url var="nuevo" value="/oficio/crea"/>
@@ -69,7 +69,7 @@
                                 <label for="contenido">
                                     Contenido<span class="required-indicator">*</span>
                                 </label>
-                            <form:textarea path="contenido"  required="true"  cssClass="span6" cssStyle="height: 400px;"/>
+                            <form:textarea path="contenido" maxlength="8000" required="true" cssClass="span6" cssStyle="height: 400px;"/>
                         </div>
                     </s:bind>
                     <s:bind path="oficio.asunto">
@@ -80,6 +80,7 @@
                             <form:input path="asunto" maxlength="128" required="true" />
                         </div>
                     </s:bind>
+
                 </div>
                 <p class="well" style="margin-top: 10px;">
                     <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Crear Documento</button>
@@ -93,7 +94,7 @@
         <script src="<c:url value='/js/bootstrap.min.js' />"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                $("input#titulo").focus();
+                $("input#departamento").focus();
             });
         </script>
     </body>

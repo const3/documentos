@@ -96,6 +96,7 @@ public class MemoController {
         int añoFuente = 1954;
         int resta = año - añoFuente;
         memo.setConsecutivo(cosecutivo);
+        memo.setStatus("A");
         memo.setTipoDocumento("Memo");
         int cosecutivo2 = cosecutivo + 1;
         log.debug("consecutivo{}", cosecutivo2);

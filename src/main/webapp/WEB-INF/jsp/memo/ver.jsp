@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="s"   uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -11,14 +12,28 @@
     <jsp:include page="../menu.jsp"/>
     <div class="span12 pagination-justify">
         <body>
-            <h1>Ver Circular ${memo.folio}</h1>
+            <h1>Ver Memo ${memo.folio}</h1>
 
             <div class="well">
                 <a href="<c:url value="/memo"/>" class="btn btn-primary"><i class="icon-list icon-white" ></i>Documentos </a>
-                <a href="<c:url value="/memo/nuevo"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Nuevo</a>
+                <a href="<c:url value="/memo/nuevo"/>" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Nuevo</a>
+                <a href="<c:url value="/memo/autoriza/${memo.id}"/>" class="btn btn-primary"><i class="icon-check icon-white" ></i>Autorizar</a>
 
             </div>
 
+            <div class="row-fluid">
+                <h4>Folio</h4>
+                <div>${memo.folio}</div>
+            </div>
+
+            <div class="row-fluid">
+                <h4>Fecha</h4>
+                <div><fmt:formatDate value="${memo.fecha}" pattern="yyyy-MM-dd" /></div>
+            </div>
+            <div class="row-fluid">
+                <h4>Asunto</h4>
+                <div>${memo.asunto}</div>
+            </div>
             <div  class="row-fluid" >
                 <h4>Destinatario</h4>
                 <div>${memo.destinatario }</div>
@@ -42,21 +57,13 @@
             </div>
 
 
-            <div class="row-fluid">
-                <h4>Fecha</h4>
-                <div>${memo.fecha}</div>
-            </div>
-            <div class="row-fluid">
-                <h4>Folio</h4>
-                <div>${memo.folio}</div>
-            </div>
             <div class="well"> 
+                <a href="<c:url value="/memo/envia/${memo.id}"/>" class="btn btn-danger" ><i class="icon-envelope icon-white" ></i>Envia</a>
                 <a href="<c:url value="/memo/elimina/${memo.id}"/>" class="btn btn-danger" onclick="return confirm('¿Seguro que quiere eliminar el documento ${documento.folio}?');"><i class="icon-trash icon-white" ></i>Eliminar</a>
-                <a href="<c:url value="/memo/download/${memo.id}"/>" class="btn btn-success" ><i class="icon-ok icon-white " ></i>Descargar</a>
+                <a href="<c:url value="/memo/download/${memo.id}"/>" class="btn btn-success" ><i class="icon-download icon-white " ></i>Descargar</a>
             </div>
-            <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
-            <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>
-            <script src="<c:url value='/js/i18n/jquery.ui.datepicker-es.min.js' />"></script>
+            <script src="<c:url value='/js/jquery-2.0.3.min.js' />"></script>
+
             <script src="<c:url value='/js/bootstrap.min.js' />"></script>
         </body>
     </div>

@@ -95,6 +95,7 @@ public class MemoInterController {
         int dia = calendar.get(Calendar.DATE);
         int añoFuente = 1954;
         int resta = año - añoFuente;
+        memoInter.setStatus("A");
         memoInter.setConsecutivo(cosecutivo);
         memoInter.setTipoDocumento("Memo Inter");
         int cosecutivo2 = cosecutivo + 1;

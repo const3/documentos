@@ -96,6 +96,7 @@ public class OficioController {
         oficio.setTipoDocumento("Oficio");
         int consecutivo2 = cosecutivo + 1;
         oficio.setConsecutivo(cosecutivo);
+        oficio.setStatus("A");
         contadorArchivo.setContador(consecutivo2);
         contadorDao.actualiza(contadorArchivo);
         String consecutivo = oficio.getDepartamento() + ":" + String.valueOf(resta) + "-" + oficio.getConsecutivo() + "/" + String.valueOf(año);

@@ -10,7 +10,7 @@
 <html>
     <jsp:include page="../menu.jsp"/>
     <body class="span12">
-        <h1>Nueva Circular</h1>
+        <h1>Nueva MemoInter</h1>
 
 
         <c:url var="nuevo" value="/memoInter/crea"/>
@@ -50,7 +50,7 @@
                     <s:bind path="memoInter.destinatario">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
                                 <label for="destinatario">
-                                    Destinatario<span class="required-indicator">*</span>
+                                    destinatario<span class="required-indicator">*</span>
                                 </label>
                             <form:input path="destinatario" maxlength="128" required="true" />
                         </div>
@@ -69,7 +69,7 @@
                                 <label for="contenido">
                                     Contenido<span class="required-indicator">*</span>
                                 </label>
-                            <form:textarea path="contenido"  required="true" />
+                            <form:textarea path="contenido" maxlength="8000" required="true" cssClass="span6" cssStyle="height: 400px;"/>
                         </div>
                     </s:bind>
                     <s:bind path="memoInter.asunto">
@@ -80,6 +80,7 @@
                             <form:input path="asunto" maxlength="128" required="true" />
                         </div>
                     </s:bind>
+
                 </div>
                 <p class="well" style="margin-top: 10px;">
                     <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Crear Documento</button>

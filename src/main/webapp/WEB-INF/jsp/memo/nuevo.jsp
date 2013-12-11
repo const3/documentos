@@ -10,7 +10,7 @@
 <html>
     <jsp:include page="../menu.jsp"/>
     <body class="span12">
-        <h1>Nueva Circular</h1>
+        <h1>Nueva Memo</h1>
 
 
         <c:url var="nuevo" value="/memo/crea"/>
@@ -50,7 +50,7 @@
                     <s:bind path="memo.destinatario">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
                                 <label for="destinatario">
-                                    Destinatario<span class="required-indicator">*</span>
+                                    destinatario<span class="required-indicator">*</span>
                                 </label>
                             <form:input path="destinatario" maxlength="128" required="true" />
                         </div>
@@ -69,10 +69,10 @@
                                 <label for="contenido">
                                     Contenido<span class="required-indicator">*</span>
                                 </label>
-                            <form:textarea path="contenido"  required="true" />
+                            <form:textarea path="contenido" maxlength="8000" required="true" cssClass="span6" cssStyle="height: 400px;"/>
                         </div>
                     </s:bind>
-                   <s:bind path="memo.asunto">
+                    <s:bind path="memo.asunto">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
                                 <label for="asunto">
                                     Asunto<span class="required-indicator">*</span>
