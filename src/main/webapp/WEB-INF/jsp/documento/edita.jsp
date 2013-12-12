@@ -14,7 +14,9 @@
 
 
         <c:url var="actualiza" value="/documento/actualiza"/>
-        <form:form action="${actualiza}" method="post" commandName="documento">
+        <form:form commandName="documento" action="${actualiza}" method="post" >
+            <form:hidden path="id" />
+            <form:hidden path="version" />
             <form:errors path="*">
                 <div class="alert alert-block alert-error fade in" role="status">
                     <a class="close" data-dismiss="alert">×</a>
@@ -23,8 +25,7 @@
                     </c:forEach>
                 </div>
             </form:errors>
-            <form:hidden path="id" />
-            <form:hidden path="version" />
+
             ${documento.id}
             <fieldset>
                 <div class="row-fluid">
@@ -91,17 +92,15 @@
                             <form:input path="asunto" maxlength="128" required="true" />
                         </div>
                     </s:bind>
-
                 </div>
-                <p class="well" style="margin-top: 10px;">
-                    <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Actualizar Documento</button>
-                    <a class="btn " href="<s:url value='/documento'/>"><i class="icon-remove"></i> Cancelar </a>
-                </p>
             </fieldset>
+            <p class="well" style="margin-top: 10px;">
+                <button type="submit" name="actualizarBtn" class="btn btn-primary " id="actualizar" ><i class="icon-ok icon-white"></i>&nbsp;Actualizar Documento</button>
+                <a class="btn " href="<s:url value='/documento'/>"><i class="icon-remove"></i> Cancelar </a>
+            </p>
+
         </form:form>
-        <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
-        <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>
-        <script src="<c:url value='/js/i18n/jquery.ui.datepicker-es.min.js' />"></script>
+        <script src="<c:url value='/js/jquery-2.0.3.min.js' />"></script>
         <script src="<c:url value='/js/bootstrap.min.js' />"></script>
         <script type="text/javascript">
             $(document).ready(function() {

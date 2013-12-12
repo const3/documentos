@@ -58,6 +58,12 @@ public class Documento implements Serializable {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+  
+
     public Documento(String destinatario, String departamento, String contenido, String creador) {
         this.destinatario = destinatario;
         this.departamento = departamento;

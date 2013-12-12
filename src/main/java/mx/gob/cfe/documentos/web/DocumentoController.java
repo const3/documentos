@@ -114,6 +114,7 @@ public class DocumentoController {
         int resta = año - añoFuente;
         documento.setTipoDocumento("Documento");
         documento.setCreador(usuario.getIniciales());
+        documento.setStatus("A");
         documento = instance.crea(documento);
         String consecutivo = documento.getDepartamento() + ":" + String.valueOf(resta) + "-" + documento.getId().toString() + "/" + String.valueOf(año);
         documento.setFolio(consecutivo);
@@ -149,14 +150,9 @@ public class DocumentoController {
             return "documento/edita";
         }
         try {
-            Enumeration<String> values = request.getParameterNames();
-            do {
-                log.debug("namesparameter{}", values.nextElement());
-            } while (values.hasMoreElements());
-            String id = request.getParameter("id");
-            log.debug("parameter{}id", id);
-            log.debug("documento{}id", documento.getId());
+
             log.debug("documento{}", documento.toString());
+
             documento = instance.actualiza(documento);
         } catch (ConstraintViolationException e) {
             log.error("No se pudo crear la Asociacion", e);
