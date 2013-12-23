@@ -23,7 +23,11 @@
  */
 package mx.gob.cfe.documentos.web;
 
+import java.security.Principal;
+import javax.servlet.http.HttpServletRequest;
 import mx.gob.cfe.documentos.dao.DocumentoDao;
+import mx.gob.cfe.documentos.dao.UsuarioDao;
+import mx.gob.cfe.documentos.model.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +43,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class InicioController {
 
+    @Autowired
+    private UsuarioDao usuarioDao;
+
     private static final Logger log = LoggerFactory.getLogger(InicioController.class);
     @Autowired
     private DocumentoDao documentoDao;
 
     @RequestMapping
-    public String inicio(Model model) {
+    public String inicio(Model model, Principal principal, HttpServletRequest request) {
         log.info("Mostrando pagina de inicio");
+        String name = principal.getName();
+        log.debug("Usuario con rpe{} logeado", name);
+        Usuario usuario = usuarioDao.obtinePorUsername(name);
+        if (usuario.isAdministrador()) {
+            log.debug("Admin en sessión");
+        }
+        request.getSession().setAttribute("usuarioLogeado", usuario);
         model.addAttribute("mensaje", "Hola desde InicioController");
         return "inicio/index";
     }

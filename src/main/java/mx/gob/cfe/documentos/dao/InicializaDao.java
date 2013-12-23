@@ -110,7 +110,7 @@ public class InicializaDao {
         rolesUser.add(rolDao.obtiene("ROLE_USER"));
         usuario.setRoles(rolesUser);
         usuario.setUsername("sam");
-        usuario.setAdmin(Boolean.TRUE);
+        usuario.setAdministrador(Boolean.TRUE);
         usuarioDao.crea(usuario);
     }
 

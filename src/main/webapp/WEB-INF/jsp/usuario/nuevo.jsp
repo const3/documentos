@@ -115,7 +115,17 @@
                             </select> 
                         </div>
                 </s:bind>
-
+                <s:bind path="usuario.administrador">
+                    <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
+                            <label for="administrador">
+                                Administrador
+                                <span class="required-indicator">*</span>
+                            </label>
+                        <form:radiobutton path="administrador"  value="1"  cssClass="span3" />Si<br />
+                        <form:radiobutton path="administrador"  value="0"  cssClass="span3" />No<br />
+                        <form:errors path="administrador" cssClass="alert alert-error" />
+                    </div>
+                </s:bind>
                 <p class="well" style="margin-top: 10px;">
                     <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i><span class="icon-white icon-check"></span></i>&nbsp;Crear Usuario</button>
                     <a class="btn btn-danger " href="<s:url value='/usuario'/>"><i class="icon-white icon-eject"></i> Cancelar </a>
