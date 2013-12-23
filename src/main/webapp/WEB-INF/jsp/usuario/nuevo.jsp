@@ -95,12 +95,25 @@
                     </div>
                 </s:bind>
                 <s:bind path="usuario.oficina">
-                    <div class="form-horizontal <c:if test='${not empty status.errorMessages}'>error</c:if>">
+                    <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
                             <label for="oficina">
-                                Oficina<span class="required-indicator">*</span>
+                                Oficina
+                                <span class="required-indicator">*</span>
                             </label>
-                        <form:input path="oficina" maxlength="128" required="true" />
-                    </div>
+                            <select name="oficina">  
+                                <option value="DA" selected>Administración</option>  
+                                <option value="DCL">Calidad</option>  
+                                <option value="DCFE">CFEfectiva</option>  
+                                <option value="DC">Comercial</option>  
+                                <option value="DCSC">CSC</option>  
+                                <option value="DZ">Distribución</option>  
+                                <option value="DM">Medición</option>  
+                                <option value="DP">Personal</option>  
+                                <option value="DPL">Planeación</option>  
+                                <option value="DI">Sistemas</option>  
+                                <option value="SZ">Superintendencia</option>  
+                            </select> 
+                        </div>
                 </s:bind>
 
                 <p class="well" style="margin-top: 10px;">

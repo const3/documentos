@@ -86,7 +86,7 @@ public class MemoController {
         String username = principal.getName();
         Usuario usuario = usuarioDao.obtinePorUsername(username);
         memo.setCreador(usuario.getIniciales());
-        ContadorArchivo contadorArchivo = contadorDao.obtiene("Memo");
+        ContadorArchivo contadorArchivo = contadorDao.obtiene("Memo", usuario.getOficina());
         int cosecutivo = contadorArchivo.getContador();
         log.debug("consecutivo{}", cosecutivo);
         Calendar calendar = GregorianCalendar.getInstance();

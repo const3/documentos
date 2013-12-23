@@ -51,10 +51,11 @@ public class ContadorArchivoDao {
     }
 
     @Transactional(readOnly = true)
-    public ContadorArchivo obtiene(String documento) {
+    public ContadorArchivo obtiene(String documento, String departamento) {
         Query query = currentSession().createQuery(
-                "select c from ContadorArchivo c where c.documento = :documento");
+                "select c from ContadorArchivo c where c.documento = :documento AND c.departamento =:departamento");
         query.setString("documento", documento);
+        query.setString("departamento", departamento);
         return (ContadorArchivo) query.uniqueResult();
     }
 

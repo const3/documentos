@@ -28,6 +28,7 @@ public class ContadorArchivo {
     private String documento;
     private Integer contador;
     private Integer antiguedad;
+    private String departamento;
 
     public Long getId() {
         return id;
@@ -69,10 +70,18 @@ public class ContadorArchivo {
         this.antiguedad = antiguedad;
     }
 
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
     @Override
     public String toString() {
         return "ContadorArchivo{" + "id=" + id + ", version=" + version + ", documento=" + documento + ", contador=" + contador
-                + ", antiguedad=" + antiguedad + '}';
+                + ", antiguedad=" + antiguedad + ", departamento=" + departamento + '}';
     }
 
 }

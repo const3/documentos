@@ -84,7 +84,7 @@ public class CircularController {
         }
         String username = principal.getName();
         Usuario usuario = usuarioDao.obtinePorUsername(username);
-        ContadorArchivo contadorArchivo = contadorDao.obtiene("Circular");
+        ContadorArchivo contadorArchivo = contadorDao.obtiene("Circular", usuario.getOficina());
         int cosecutivo = contadorArchivo.getContador();
         log.debug("consecutivo{}", cosecutivo);
         Calendar calendar = GregorianCalendar.getInstance();

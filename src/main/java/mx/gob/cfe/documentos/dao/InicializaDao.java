@@ -5,10 +5,12 @@
  */
 package mx.gob.cfe.documentos.dao;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import mx.gob.cfe.documentos.model.ContadorArchivo;
 import mx.gob.cfe.documentos.model.Rol;
@@ -46,28 +48,48 @@ public class InicializaDao {
         int año = calendar.get(Calendar.YEAR);
         int añoFundacion = 1954;
         int antiguedad = año - añoFundacion;
-        log.debug("Estableciendo contadores en 0's");
-        ContadorArchivo contadorArchivo = new ContadorArchivo();
-        contadorArchivo.setAntiguedad(antiguedad);
-        contadorArchivo.setContador(1);
-        contadorArchivo.setDocumento("Circular");
-        contadorArchivoDao.crea(contadorArchivo);
-        contadorArchivo = new ContadorArchivo();
-        contadorArchivo.setAntiguedad(antiguedad);
-        contadorArchivo.setContador(1);
-        contadorArchivo.setDocumento("Memo");
-        contadorArchivoDao.crea(contadorArchivo);
-        contadorArchivo = new ContadorArchivo();
-        contadorArchivo.setAntiguedad(antiguedad);
-        contadorArchivo.setContador(1);
-        contadorArchivo.setDocumento("Memo Inter");
-        contadorArchivoDao.crea(contadorArchivo);
-        contadorArchivo = new ContadorArchivo();
-        contadorArchivo.setAntiguedad(antiguedad);
-        contadorArchivo.setContador(1);
-        contadorArchivo.setDocumento("Oficio");
-        contadorArchivoDao.crea(contadorArchivo);
 
+        log.debug("Estableciendo contadores en 1's");
+        List<String> departamentos = new ArrayList();
+        departamentos.add("DA");
+        departamentos.add("DCL");
+        departamentos.add("DCFE");
+        departamentos.add("DC");
+        departamentos.add("DCSC");
+        departamentos.add("DZ");
+        departamentos.add("DM");
+        departamentos.add("DP");
+        departamentos.add("DPL");
+        departamentos.add("DI");
+        departamentos.add("SZ");
+
+        for (String x : departamentos) {
+
+            ContadorArchivo contadorArchivo = new ContadorArchivo();
+            contadorArchivo.setAntiguedad(antiguedad);
+            contadorArchivo.setContador(1);
+            contadorArchivo.setDocumento("Circular");
+            contadorArchivo.setDepartamento(x);
+            contadorArchivoDao.crea(contadorArchivo);
+            contadorArchivo = new ContadorArchivo();
+            contadorArchivo.setAntiguedad(antiguedad);
+            contadorArchivo.setContador(1);
+            contadorArchivo.setDocumento("Memo");
+            contadorArchivo.setDepartamento(x);
+            contadorArchivoDao.crea(contadorArchivo);
+            contadorArchivo = new ContadorArchivo();
+            contadorArchivo.setAntiguedad(antiguedad);
+            contadorArchivo.setContador(1);
+            contadorArchivo.setDocumento("Memo Inter");
+            contadorArchivo.setDepartamento(x);
+            contadorArchivoDao.crea(contadorArchivo);
+            contadorArchivo = new ContadorArchivo();
+            contadorArchivo.setAntiguedad(antiguedad);
+            contadorArchivo.setContador(1);
+            contadorArchivo.setDocumento("Oficio");
+            contadorArchivo.setDepartamento(x);
+            contadorArchivoDao.crea(contadorArchivo);
+        }
         Rol rol = new Rol("ROLE_ADMIN");
         rolDao.crea(rol);
         rol = new Rol("ROLE_USER");
@@ -88,6 +110,7 @@ public class InicializaDao {
         rolesUser.add(rolDao.obtiene("ROLE_USER"));
         usuario.setRoles(rolesUser);
         usuario.setUsername("sam");
+        usuario.setAdmin(Boolean.TRUE);
         usuarioDao.crea(usuario);
     }
 

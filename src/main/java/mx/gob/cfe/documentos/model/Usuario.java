@@ -72,8 +72,9 @@ public class Usuario implements Serializable {
     private String puesto;
     private String iniciales;
     private String oficina;
-     @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
+    private Boolean admin;
 
     public Long getId() {
         return id;
@@ -202,7 +203,7 @@ public class Usuario implements Serializable {
     public void setOficina(String oficina) {
         this.oficina = oficina;
     }
-    
+
     public Date getFechaAlta() {
         return fechaAlta;
     }
@@ -211,10 +212,21 @@ public class Usuario implements Serializable {
         this.fechaAlta = fechaAlta;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "id=" + id + ", version=" + version + ", username=" + username + ", password=" + password + ", enabled=" + enabled + ", accountExpired=" + accountExpired + ", accountLocked=" + accountLocked + ", credentialsExpired=" + credentialsExpired + ", nombre=" + nombre + ", apPaterno=" + apPaterno + ", apMaterno=" + apMaterno + ", roles=" + roles + ", correo=" + correo + ", puesto=" + puesto + ", iniciales=" + iniciales + ", oficina=" + oficina + ", fechaAlta=" + fechaAlta + '}';
+    public Boolean isAdmin() {
+        return admin;
     }
 
-    
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", version=" + version + ", username=" + username + ", password=" + password
+                + ", enabled=" + enabled + ", accountExpired=" + accountExpired + ", accountLocked=" + accountLocked
+                + ", credentialsExpired=" + credentialsExpired + ", nombre=" + nombre + ", apPaterno=" + apPaterno
+                + ", apMaterno=" + apMaterno + ", roles=" + roles + ", correo=" + correo + ", puesto=" + puesto
+                + ", iniciales=" + iniciales + ", oficina=" + oficina + ", fechaAlta=" + fechaAlta + ", admin=" + admin + '}';
+    }
+
 }

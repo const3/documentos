@@ -85,7 +85,7 @@ public class OficioController {
         String username = principal.getName();
         Usuario usuario = usuarioDao.obtinePorUsername(username);
         oficio.setCreador(usuario.getIniciales());
-        ContadorArchivo contadorArchivo = contadorDao.obtiene("Oficio");
+        ContadorArchivo contadorArchivo = contadorDao.obtiene("Oficio", usuario.getOficina());
         int cosecutivo = contadorArchivo.getContador();
         Calendar calendar = GregorianCalendar.getInstance();
         int año = calendar.get(Calendar.YEAR);
