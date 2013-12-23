@@ -95,4 +95,13 @@ public class DocumentoDao {
         query.setString("departamento", departamento);
         return query.list();
     }
+
+    public List<Documento> autoriza(String fuente) {
+        String statusA = "A";
+
+        Query query = currentSession().createQuery("select a from Documento a where  a.status =:statusA and a.fuente =:fuente order by fecha desc");
+        query.setString("statusA", statusA);
+        query.setString("fuente", fuente);
+        return query.list();
+    }
 }

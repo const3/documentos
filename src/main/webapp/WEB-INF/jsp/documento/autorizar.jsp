@@ -10,7 +10,7 @@
     <jsp:include page="../menu.jsp"/>
 
     <body class="span12">
-        <h1>Documentos Enviados</h1>
+        <h1>Documentos para Autorizar</h1>
 
         <table id="lista" class="table table-striped">
             <thead>

@@ -50,6 +50,7 @@ public class Documento implements Serializable {
     private Date fecha;
     private String folio;
     private String asunto;
+    private String fuente;
 
     public Documento() {
     }
@@ -61,8 +62,6 @@ public class Documento implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-  
 
     public Documento(String destinatario, String departamento, String contenido, String creador) {
         this.destinatario = destinatario;
@@ -159,11 +158,19 @@ public class Documento implements Serializable {
         this.status = status;
     }
 
+    public String getFuente() {
+        return fuente;
+    }
+
+    public void setFuente(String fuente) {
+        this.fuente = fuente;
+    }
+
     @Override
     public String toString() {
         return "Documento{" + "id=" + id + ", version=" + version + ", destinatario=" + destinatario + ", departamento=" + departamento
                 + ", contenido=" + contenido + ", tipoDocumento=" + tipoDocumento + ", status=" + status + ", remitente=" + remitente
-                + ", creador=" + creador + ", fecha=" + fecha + ", folio=" + folio + ", asunto=" + asunto + '}';
+                + ", creador=" + creador + ", fecha=" + fecha + ", folio=" + folio + ", asunto=" + asunto + ", fuente=" + fuente + '}';
     }
 
 }

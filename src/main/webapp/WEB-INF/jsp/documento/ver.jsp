@@ -15,7 +15,6 @@
 
             <div class="well">
                 <a href="<c:url value="/documento"/>" class="btn btn-primary"><i class="icon-list icon-white" ></i>Documentos </a>
-                <a href="<c:url value="/documento/nuevo"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Nuevo</a>
 
             </div>
 
@@ -51,8 +50,10 @@
                 <div>${documento.folio}</div>
             </div>
             <div class="well"> 
-                <a href="<c:url value="/documento/elimina/${documento.id}"/>" class="btn btn-danger" onclick="return confirm('¿Seguro que quiere eliminar el documento ${documento.departamento}?');"><i class="icon-trash icon-white" ></i>Eliminar</a>
                 <a href="<c:url value="/documento/download/${documento.id}"/>" class="btn btn-success" ><i class="icon-ok icon-white " ></i>Descargar</a>
+                <c:if test="${documento.status=='A'}">
+                    <a href="<c:url value="/documento/autoriza/${documento.id}"/>" class="btn btn-success" ><i class="icon-ok icon-white " ></i>Autorizar</a>
+                </c:if>
             </div>
             <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
             <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>

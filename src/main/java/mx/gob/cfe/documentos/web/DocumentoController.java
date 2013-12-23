@@ -85,10 +85,36 @@ public class DocumentoController {
     public String listaEnviados(Model model, Principal principal) {
         String username = principal.getName();
         Usuario usuario = usuarioDao.obtinePorUsername(username);
-        model.addAttribute("circulares", instance.listaEnviados(usuario.getOficina()));
+        model.addAttribute("documentos", instance.listaEnviados(usuario.getOficina()));
         List lista = instance.listaEnviados(usuario.getOficina());
         log.error("lista{}", lista);
         return "documento/enviados";
+    }
+
+    @RequestMapping("/autorizar")
+    public String autorizar(Model model, Principal principal) {
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+        if (!"jefe".equals(usuario.getPuesto())) {
+            return "usuario/noAutorizado";
+        }
+        model.addAttribute("documentos", instance.autoriza(usuario.getOficina()));
+        List lista = instance.listaEnviados(usuario.getOficina());
+        log.error("lista{}", lista);
+        return "documento/autorizar";
+    }
+
+    @RequestMapping("/autoriza/{id}")
+    public String autoriza(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes, Principal principal) {
+        String username = principal.getName();
+        Usuario usuario = usuarioDao.obtinePorUsername(username);
+        if (!"jefe".equals(usuario.getPuesto())) {
+            return "usuario/noAutorizado";
+        }
+        Documento documento = instance.obtiene(id);
+        documento.setStatus("AUT");
+        instance.actualiza(documento);
+        return "redirect:/documento/autorizar";
     }
 
     @RequestMapping("/nuevo")

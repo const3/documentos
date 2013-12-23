@@ -97,6 +97,7 @@ public class CircularController {
         circular.setStatus("A");
         circular.setConsecutivo(cosecutivo);
         circular.setTipoDocumento("Circular");
+        circular.setFuente(usuario.getOficina());
         int cosecutivo2 = cosecutivo + 1;
         log.debug("consecutivo{}", cosecutivo2);
         contadorArchivo.setContador(cosecutivo2);
@@ -126,14 +127,6 @@ public class CircularController {
     public String envia(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
         Circular circular = (Circular) instance.obtiene(id);
         circular.setStatus("ENV");
-        instance.actualiza(circular);
-        return "redirect:/circular";
-    }
-
-    @RequestMapping("/autoriza/{id}")
-    public String autoriza(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
-        Circular circular = (Circular) instance.obtiene(id);
-        circular.setStatus("AUT");
         instance.actualiza(circular);
         return "redirect:/circular";
     }

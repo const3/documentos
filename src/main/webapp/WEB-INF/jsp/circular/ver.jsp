@@ -17,8 +17,9 @@
             <div class="well">
                 <a href="<c:url value="/circular"/>" class="btn btn-primary"><i class="icon-list icon-white" ></i>Documentos </a>
                 <a href="<c:url value="/circular/nuevo"/>" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Nuevo</a>
-                <a href="<c:url value="/circular/autoriza/${circular.id}"/>" class="btn btn-primary"><i class="icon-check icon-white" ></i>Autorizar</a>
-
+                <c:if test="${usuarioLogeado.puesto}==jefe">
+                    <a href="<c:url value="/circular/autoriza/${circular.id}"/>" class="btn btn-primary"><i class="icon-check icon-white" ></i>Autorizar</a>
+                </c:if>
             </div>
 
             <div class="row-fluid">
@@ -58,7 +59,9 @@
 
 
             <div class="well"> 
-                <a href="<c:url value="/circular/envia/${circular.id}"/>" class="btn btn-danger" ><i class="icon-envelope icon-white" ></i>Envia</a>
+                <c:if test="${circular.status=='AUT'}">
+                    <a href="<c:url value="/circular/envia/${circular.id}"/>" class="btn btn-danger" ><i class="icon-envelope icon-white" ></i>Envia</a>
+                </c:if>
                 <a href="<c:url value="/circular/elimina/${circular.id}"/>" class="btn btn-danger" onclick="return confirm('¿Seguro que quiere eliminar el documento ${documento.folio}?');"><i class="icon-trash icon-white" ></i>Eliminar</a>
                 <a href="<c:url value="/circular/download/${circular.id}"/>" class="btn btn-success" ><i class="icon-download icon-white " ></i>Descargar</a>
             </div>

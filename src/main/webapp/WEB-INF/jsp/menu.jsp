@@ -40,6 +40,10 @@
                                     <li> <a href="<c:url value='/oficio'/>">Oficios</a></li>
                                     <li class="divider"></li>
                                     <li> <a href="<c:url value='/documento/reporte'/>">Reporte</a></li>
+                                        <c:if test="${usuarioLogeado.puesto=='jefe'}">
+                                        <li class="divider"></li>
+                                        <li> <a href="<c:url value='/documento/autorizar'/>">Autorizar</a></li>
+                                        </c:if>
                                 </ul>
                             </li>
                             <li ><a href="<c:url value='/documento/enviados'/>">Documentos Compartidos</a></li>
