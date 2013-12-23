@@ -27,14 +27,13 @@
                     <a class="brand" href="<c:url value='/'/>">Inicio</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <c:if test="${usuarioLogeado.administrador}">
                                 <li ><a href="<c:url value='/usuario'/>">Usuarios</a></li>
-                                </sec:authorize>
+                                </c:if>
                             <!--Dropdown -->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archivos <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li> <a href="<c:url value='/documento'/>">Documentos </a></li>
                                     <li> <a href="<c:url value='/circular'/>">Circulares </a></li>
                                     <li> <a href="<c:url value='/memo'/>">Memos</a></li>
                                     <li> <a href="<c:url value='/memoInter'/>">Memos Inter</a></li>

@@ -7,13 +7,13 @@
 
 
 <html>
-    <jsp:include page="menu.jsp"/>
+    <jsp:include page="../menu.jsp"/>
 
     <body >
-        <h1>Lista de Usuarios</h1>
         <div class="container-fluid">
+            <h1>Lista de Usuarios</h1>
             <div class="well">
-                <a href="<c:url value="/usuario/nuevo"/>" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Nuevo</a>
+                <a href="<c:url value="/usuario/nuevo"/>" class="btn btn-primary"><i class="icon-user icon-white" ></i>Nuevo</a>
             </div>
 
             <table id="lista" class="table table-striped well-small">

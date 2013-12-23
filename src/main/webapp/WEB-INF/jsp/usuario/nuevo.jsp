@@ -8,7 +8,7 @@
 
 
 <html>
-    <jsp:include page="menu.jsp"/>
+    <jsp:include page="../menu.jsp"/>
     <body class="span12">
         <h1>Nuevo Usuario</h1>
 
@@ -128,7 +128,7 @@
                 </s:bind>
                 <p class="well" style="margin-top: 10px;">
                     <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i><span class="icon-white icon-check"></span></i>&nbsp;Crear Usuario</button>
-                    <a class="btn btn-danger " href="<s:url value='/usuario'/>"><i class="icon-white icon-eject"></i> Cancelar </a>
+                    <a class="btn btn-danger " href="<s:url value='/usuario'/>"><i class="icon-white icon-remove-sign"></i> Cancelar </a>
                 </p>
             </fieldset>
         </form:form>

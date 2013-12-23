@@ -8,14 +8,14 @@
 <html>
 
 
-    <jsp:include page="menu.jsp"/>
+    <jsp:include page="../menu.jsp"/>
     <div class="span12 pagination-justify">
         <body>
             <h1>Ver Usuario ${usuario.nombre}</h1>
 
             <div class="well">
-                <a href="<c:url value="/usuario"/>" class="btn btn-primary"><i class="icon-list-ul icon-white" ></i>Documentos </a>
-                <a href="<c:url value="/usuario/nuevo"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Nuevo</a>
+                <a href="<c:url value="/usuario"/>" class="btn btn-primary"><i class="icon-list icon-white" ></i>Documentos </a>
+                <a href="<c:url value="/usuario/nuevo"/>" class="btn btn-primary"><i class="icon-user icon-white" ></i>Nuevo</a>
 
             </div>
 
@@ -50,17 +50,9 @@
             </div>
 
 
-            <div class="row-fluid">
-                <h4>Fecha</h4>
-                <div>${oficio.fecha}</div>
-            </div>
-            <div class="row-fluid">
-                <h4>Folio</h4>
-                <div>${oficio.folio}</div>
-            </div>
+
             <div class="well"> 
-                <a href="<c:url value="/oficio/elimina/${oficio.id}"/>" class="btn btn-danger" onclick="return confirm('¿Seguro que quiere eliminar el documento ${documento.departamento}?');"><i class="icon-trash icon-white" ></i>Eliminar</a>
-                <a href="<c:url value="/oficio/download/${oficio.id}"/>" class="btn btn-success" ><i class="icon-ok icon-white " ></i>Descargar</a>
+                <a href="<c:url value="/usuario/elimina/${usuario.id}"/>" class="btn btn-danger" onclick="return confirm('¿Seguro que quiere eliminar el usuario ${usuario.nombre}?');"><i class="icon-trash icon-white" ></i>Eliminar</a>
             </div>
             <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
             <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>

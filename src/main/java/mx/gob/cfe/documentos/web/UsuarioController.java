@@ -5,6 +5,7 @@
  */
 package mx.gob.cfe.documentos.web;
 
+import java.security.Principal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -39,21 +40,38 @@ public class UsuarioController {
     private RolDao rolDao;
 
     @RequestMapping
-    public String lista(Model model) {
+    public String lista(Model model, Principal principal) {
+        String name = principal.getName();
+        Usuario usuario = instance.obtinePorUsername(name);
+        if (!usuario.isAdministrador()) {
+            return "usuario/noAutorizado";
+        }
         model.addAttribute("usuarios", instance.lista());
         List lista = instance.lista();
         log.error("lista{}", lista);
         return "usuario/lista";
+
     }
 
     @RequestMapping("/nuevo")
-    public String nuevo(Model model) {
+    public String nuevo(Model model, Principal principal) {
+        String name = principal.getName();
+        Usuario usuario = instance.obtinePorUsername(name);
+        if (!usuario.isAdministrador()) {
+            return "usuario/noAutorizado";
+        }
         model.addAttribute("usuario", new Usuario());
         return "usuario/nuevo";
     }
 
     @RequestMapping("/crea")
-    public String crea(@Valid Usuario usuario, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model) {
+    public String crea(@Valid Usuario usuario, RedirectAttributes redirectAttributes, BindingResult bindingResult, Model model, 
+            Principal principal) {
+       String name = principal.getName();
+        Usuario usuarioSession = instance.obtinePorUsername(name);
+        if (!usuarioSession.isAdministrador()) {
+            return "usuario/noAutorizado";
+        }
         if (bindingResult.hasErrors()) {
             return "usuario/nuevo";
         }
@@ -67,13 +85,23 @@ public class UsuarioController {
     }
 
     @RequestMapping("/ver/{id}")
-    public String ver(@PathVariable Long id, Model model) {
+    public String ver(@PathVariable Long id, Model model, Principal principal) {
+      String name = principal.getName();
+        Usuario usuario = instance.obtinePorUsername(name);
+        if (!usuario.isAdministrador()) {
+            return "usuario/noAutorizado";
+        }
         model.addAttribute("usuario", instance.obtiene(id));
         return "usuario/ver";
     }
 
     @RequestMapping("/eliminar/{id}")
-    public String elimina(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+    public String elimina(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes, Principal principal) {
+       String name = principal.getName();
+        Usuario usuario = instance.obtinePorUsername(name);
+        if (!usuario.isAdministrador()) {
+            return "usuario/noAutorizado";
+        }
         String nombre = instance.elimina(id);
         redirectAttributes.addFlashAttribute("mensaje", "Se elimino el usuario" + nombre);
         return "redirect:/usuario";
