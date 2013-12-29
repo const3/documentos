@@ -17,7 +17,6 @@
             <div class="well">
                 <a href="<c:url value="/memoInter"/>" class="btn btn-primary"><i class="icon-list icon-white" ></i>Documentos </a>
                 <a href="<c:url value="/memoInter/nuevo"/>" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Nuevo</a>
-                <a href="<c:url value="/memoInter/autoriza/${memoInter.id}"/>" class="btn btn-primary"><i class="icon-check icon-white" ></i>Autorizar</a>
 
             </div>
 
@@ -58,7 +57,9 @@
 
 
             <div class="well"> 
-                <a href="<c:url value="/memoInter/envia/${memoInter.id}"/>" class="btn btn-danger" ><i class="icon-envelope icon-white" ></i>Envia</a>
+                <c:if test="${memoInter.status=='AUT'}">
+                    <a href="<c:url value="/memoInter/envia/${memoInter.id}"/>" class="btn btn-danger" ><i class="icon-envelope icon-white" ></i>Envia</a>
+                </c:if>
                 <a href="<c:url value="/memoInter/elimina/${memoInter.id}"/>" class="btn btn-danger" onclick="return confirm('¿Seguro que quiere eliminar el documento ${documento.folio}?');"><i class="icon-trash icon-white" ></i>Eliminar</a>
                 <a href="<c:url value="/memoInter/download/${memoInter.id}"/>" class="btn btn-success" ><i class="icon-download icon-white " ></i>Descargar</a>
             </div>

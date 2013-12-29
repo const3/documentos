@@ -35,6 +35,7 @@
                         <td>${memoInter.remitente}</td>
                         <td>${memoInter.creador}</td>
                         <td>${memoInter.folio}</td>
+                        <td><a href="<c:url value="documento/edita/${memoInter.id}"/>">Editar</a> </td>
                     </tr>
                 </c:forEach> 
             </tbody>

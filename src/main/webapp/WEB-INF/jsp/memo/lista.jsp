@@ -35,6 +35,7 @@
                         <td>${memo.remitente}</td>
                         <td>${memo.creador}</td>
                         <td>${memo.folio}</td>
+                        <td><a href="<c:url value="documento/edita/${memo.id}"/>">Editar</a> </td>
                     </tr>
                 </c:forEach> 
             </tbody>

@@ -92,7 +92,7 @@
                 </div>
                 <p class="well" style="margin-top: 10px;">
                     <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Crear Documento</button>
-                    <a class="btn " href="<s:url value='/circular'/>"><i class="icon-remove"></i> Cancelar </a>
+                    <a class="btn " href="<s:url value='/memo'/>"><i class="icon-remove"></i> Cancelar </a>
                 </p>
             </fieldset>
         </form:form>
