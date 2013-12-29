@@ -97,6 +97,7 @@ public class OficioController {
         int consecutivo2 = cosecutivo + 1;
         oficio.setConsecutivo(cosecutivo);
         oficio.setStatus("A");
+        oficio.setFuente(usuario.getOficina());
         contadorArchivo.setContador(consecutivo2);
         contadorDao.actualiza(contadorArchivo);
         String consecutivo = oficio.getDepartamento() + ":" + String.valueOf(resta) + "-" + oficio.getConsecutivo() + "/" + String.valueOf(año);
@@ -120,13 +121,6 @@ public class OficioController {
         return "redirect:/oficio";
     }
 
-    @RequestMapping("/autoriza/{id}")
-    public String autoriza(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
-        Oficio oficio = (Oficio) instance.obtiene(id);
-        oficio.setStatus("AUT");
-        instance.actualiza(oficio);
-        return "redirect:/oficio";
-    }
 
     @RequestMapping("/elimina/{id}")
     public String elimina(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {

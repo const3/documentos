@@ -19,7 +19,6 @@ import javax.validation.Valid;
 import mx.gob.cfe.documentos.dao.ContadorArchivoDao;
 import mx.gob.cfe.documentos.dao.DocumentoDao;
 import mx.gob.cfe.documentos.dao.UsuarioDao;
-import mx.gob.cfe.documentos.model.Circular;
 import mx.gob.cfe.documentos.model.ContadorArchivo;
 import mx.gob.cfe.documentos.model.Documento;
 import mx.gob.cfe.documentos.model.Memo;
@@ -98,6 +97,7 @@ public class MemoController {
         memo.setConsecutivo(cosecutivo);
         memo.setStatus("A");
         memo.setTipoDocumento("Memo");
+        memo.setFuente(usuario.getOficina());
         int cosecutivo2 = cosecutivo + 1;
         log.debug("consecutivo{}", cosecutivo2);
         contadorArchivo.setContador(cosecutivo2);
@@ -120,14 +120,6 @@ public class MemoController {
     public String envia(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
         Memo memo = (Memo) instance.obtiene(id);
         memo.setStatus("ENV");
-        instance.actualiza(memo);
-        return "redirect:/memo";
-    }
-
-    @RequestMapping("/autoriza/{id}")
-    public String autoriza(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
-        Memo memo = (Memo) instance.obtiene(id);
-        memo.setStatus("AUT");
         instance.actualiza(memo);
         return "redirect:/memo";
     }

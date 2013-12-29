@@ -98,6 +98,7 @@ public class MemoInterController {
         memoInter.setStatus("A");
         memoInter.setConsecutivo(cosecutivo);
         memoInter.setTipoDocumento("Memo Inter");
+        memoInter.setFuente(usuario.getOficina());
         int cosecutivo2 = cosecutivo + 1;
         log.debug("consecutivo{}", cosecutivo2);
         contadorArchivo.setContador(cosecutivo2);
@@ -121,14 +122,6 @@ public class MemoInterController {
         MemoInter memoInter = (MemoInter) instance.obtiene(id);
         memoInter.setStatus("ENV");
         instance.actualiza(memoInter);
-        return "redirect:/memoInter";
-    }
-
-    @RequestMapping("/autoriza/{id}")
-    public String autoriza(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
-        Memo memo = (Memo) instance.obtiene(id);
-        memo.setStatus("AUT");
-        instance.actualiza(memo);
         return "redirect:/memoInter";
     }
 
