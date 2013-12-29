@@ -38,6 +38,7 @@
                             <td>${circular.creador}</td>
                             <td>${circular.folio}</td>
                             <td>${circular.asunto}</td>
+                            <td><a href="<c:url value="documento/edita/${circular.id}"/>">Editar</a> </td>
                         </tr>
                     </c:forEach> 
                 </tbody>

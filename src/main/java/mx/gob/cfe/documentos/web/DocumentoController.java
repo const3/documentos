@@ -160,6 +160,19 @@ public class DocumentoController {
         log.debug("Edita Asociacion {}", id);
         Documento documento = instance.obtiene(id);
         modelo.addAttribute("documento", documento);
+        String tipo = documento.getTipoDocumento();
+        switch (tipo) {
+            case "Circular":
+                return "circular/edita";
+            case "Memo":
+                return "memo/edita";
+            case "Memo Inter":
+                return "memoInter/edita";
+            case "Oficio":
+                return "oficio/edita";
+
+        }
+
         return "documento/edita";
     }
 
@@ -168,6 +181,7 @@ public class DocumentoController {
     public String actualiza(HttpServletRequest request, @Valid Documento documento, BindingResult bindingResult, Errors errors,
             Model modelo, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
+            log.debug("eeror");
             log.error("Hubo algun error en la forma, regresando");
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.debug("Error: {}", error);
@@ -182,11 +196,25 @@ public class DocumentoController {
             documento = instance.actualiza(documento);
         } catch (ConstraintViolationException e) {
             log.error("No se pudo crear la Asociacion", e);
+            log.debug("exception");
             modelo.addAttribute("documento", documento);
             return "documento/edita";
         }
         redirectAttributes.addFlashAttribute("message", "asociacion.actualizada.message");
         redirectAttributes.addFlashAttribute("messageAttrs", new String[]{documento.getAsunto()});
+        String tipo = documento.getTipoDocumento();
+        switch (tipo) {
+            case "Circular":
+                return "redirect:/circular/ver/" + documento.getId();
+            case "Memo":
+                return "redirect:/memo/ver/" + documento.getId();
+            case "Memo Inter":
+                return "redirect:/memoInter/ver/" + documento.getId();
+            case "Oficio":
+                return "redirect:/oficio/ver/" + documento.getId();
+
+        }
+
         return "redirect:/documento/ver/" + documento.getId();
     }
 
