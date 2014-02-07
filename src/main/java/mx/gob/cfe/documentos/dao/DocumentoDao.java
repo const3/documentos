@@ -35,12 +35,24 @@ public class DocumentoDao {
         return sessionFactory.getCurrentSession();
     }
 
+    /**
+     * Crea documento
+     *
+     * @param documento
+     * @return documento
+     */
     public Documento crea(Documento documento) {
         documento.setFecha(new Date());
         currentSession().save(documento);
         return documento;
     }
 
+    /**
+     * Actualiza documento
+     *
+     * @param documento
+     * @return documento
+     */
     public Documento actualiza(Documento documento) {
         documento.setFecha(new Date());
         currentSession().update(documento);
@@ -48,6 +60,12 @@ public class DocumentoDao {
         return documento;
     }
 
+    /**
+     * Elimina documento apartir del id
+     *
+     * @param documentoId
+     * @return regresa el nombre del creador del documento.
+     */
     public String elimina(Long documentoId) {
         Documento documento = (Documento) currentSession().get(Documento.class, documentoId);
         String creador = documento.getCreador();
@@ -56,11 +74,24 @@ public class DocumentoDao {
         return creador;
     }
 
+    /**
+     * Obtiene documento apartir de id
+     *
+     * @param documentoId
+     * @return regresa el objeto completo
+     */
     public Documento obtiene(Long documentoId) {
         Documento articulo = (Documento) currentSession().get(Documento.class, documentoId);
         return articulo;
     }
 
+    /**
+     * Este metodo lista los documentos de quien lo creo por tipo y estatus
+     *
+     * @param tipoArchivo
+     * @param creador
+     * @return regresa la lista de documentos que aun no han sido enviados.
+     */
     public List<Documento> lista(String tipoArchivo, String creador) {
         String statusA = "A";
         String statusAUT = "AUT";
@@ -73,12 +104,43 @@ public class DocumentoDao {
         return query.list();
     }
 
+    /**
+     * Este metodo regresa la lista de todos los documentos por usuario para
+     * hacer un reporte
+     *
+     * @param creador
+     * @return regresa la lista de todos los documentos creados por el usuario
+     */
     public List<Documento> listaReporte(String creador) {
         Query query = currentSession().createQuery("select a from Documento a where a.creador=:creador  order by fecha desc");
         query.setString("creador", creador);
         return query.list();
     }
 
+    /**
+     * Este metodo lista todos los archivos en la base de datos
+     *
+     * @return Regresa los documentos en la lista
+     */
+    public List<Documento> listaDocumentosCompleto() {
+        Query query = currentSession().createQuery("select a from Documento a order by fecha desc");
+        return query.list();
+    }
+
+    /**
+     * Elimina todos los documentos a la fecha
+     */
+    public void eliminaDocumentosCompleto() {
+        Query query = currentSession().createQuery("delete a from Documento a ");
+    }
+
+    /**
+     * Lista de los documentos enviados a cada departamento
+     *
+     * @param departamento
+     * @return Regresa la lista de los documentos que han sido enviados a su
+     * departamento
+     */
     public List<Documento> listaEnviados(String departamento) {
         String statusENV = "ENV";
         Query query = currentSession().createQuery("select a from Documento a where a.status =:statusENV "
@@ -88,14 +150,12 @@ public class DocumentoDao {
         return query.list();
     }
 
-    public List<Documento> listaRecividos(String departamento) {
-        Query query = currentSession().createQuery("select a from Documento a where a.status =:status and a.departamento:departamento "
-                + "order by fecha desc");
-        query.setString("status", "REC");
-        query.setString("departamento", departamento);
-        return query.list();
-    }
-
+    /**
+     * Lista los documentos por autorizar para un jefe
+     *
+     * @param fuente
+     * @return regresa la lista de documentos que aun no han sido autorizados
+     */
     public List<Documento> autoriza(String fuente) {
         String statusA = "A";
 

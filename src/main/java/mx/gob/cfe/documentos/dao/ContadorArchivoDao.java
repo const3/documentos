@@ -5,6 +5,10 @@
  */
 package mx.gob.cfe.documentos.dao;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
 import mx.gob.cfe.documentos.model.ContadorArchivo;
 import mx.gob.cfe.documentos.model.Documento;
 import org.hibernate.Query;
@@ -57,6 +61,55 @@ public class ContadorArchivoDao {
         query.setString("documento", documento);
         query.setString("departamento", departamento);
         return (ContadorArchivo) query.uniqueResult();
+    }
+
+    public void reiniciarContador() {
+        Calendar calendar = GregorianCalendar.getInstance();
+        int año = calendar.get(Calendar.YEAR);
+        int añoFundacion = 1954;
+        int antiguedad = año - añoFundacion;
+
+        log.debug("Estableciendo contadores en 1's");
+        List<String> departamentos = new ArrayList();
+        departamentos.add("DA");
+        departamentos.add("DCL");
+        departamentos.add("DCFE");
+        departamentos.add("DC");
+        departamentos.add("DCSC");
+        departamentos.add("DZ");
+        departamentos.add("DM");
+        departamentos.add("DP");
+        departamentos.add("DPL");
+        departamentos.add("DI");
+        departamentos.add("SZ");
+
+        for (String x : departamentos) {
+
+            ContadorArchivo contadorArchivo = new ContadorArchivo();
+            contadorArchivo.setAntiguedad(antiguedad);
+            contadorArchivo.setContador(1);
+            contadorArchivo.setDocumento("Circular");
+            contadorArchivo.setDepartamento(x);
+            crea(contadorArchivo);
+            contadorArchivo = new ContadorArchivo();
+            contadorArchivo.setAntiguedad(antiguedad);
+            contadorArchivo.setContador(1);
+            contadorArchivo.setDocumento("Memo");
+            contadorArchivo.setDepartamento(x);
+            crea(contadorArchivo);
+            contadorArchivo = new ContadorArchivo();
+            contadorArchivo.setAntiguedad(antiguedad);
+            contadorArchivo.setContador(1);
+            contadorArchivo.setDocumento("Memo Inter");
+            contadorArchivo.setDepartamento(x);
+            crea(contadorArchivo);
+            contadorArchivo = new ContadorArchivo();
+            contadorArchivo.setAntiguedad(antiguedad);
+            contadorArchivo.setContador(1);
+            contadorArchivo.setDocumento("Oficio");
+            contadorArchivo.setDepartamento(x);
+            crea(contadorArchivo);
+        }
     }
 
 }
