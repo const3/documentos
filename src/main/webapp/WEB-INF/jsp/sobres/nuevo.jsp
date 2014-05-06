@@ -13,8 +13,8 @@
         <h1>Nuevo Documento</h1>
 
 
-        <c:url var="nuevo" value="/documento/crea"/>
-        <form:form action="${nuevo}" method="post" commandName="documento">
+        <c:url var="nuevo" value="/sobres/crea"/>
+        <form:form action="${nuevo}" method="post" commandName="sobre">
             <form:errors path="*">
                 <div class="alert alert-block alert-error fade in" role="status">
                     <a class="close" data-dismiss="alert">×</a>
@@ -26,57 +26,52 @@
             <fieldset>
                 <div class="row-fluid">
 
-                    <s:bind path="documento.departamento">
+
+                    <s:bind path="sobre.nombre">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
-                                <label for="departamento">
-                                    Departamento
-                                    <span class="required-indicator">*</span>
+                                <label for="nombre">
+                                    Nombre<span class="required-indicator">*</span>
                                 </label>
-                                <select name="departamento">  
-                                    <option value="DPL">Esc. Sábatica</option>  
-                                    <option value="DI">Comunicación</option>  
-                                    <option value="SZ">Mayordomía</option>  
-                                </select> 
-                            </div>
-                    </s:bind>
-                    <s:bind path="documento.destinatario">
-                        <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
-                                <label for="destinatario">
-                                    destinatario<span class="required-indicator">*</span>
-                                </label>
-                            <form:input path="destinatario" maxlength="128" required="true" />
+                            <form:input path="nombre" maxlength="128" required="true" />
                         </div>
                     </s:bind>
 
-                    <s:bind path="documento.remitente">
+                    <s:bind path="sobre.diezmos">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
-                                <label for="remitente">
-                                    Remitente<span class="required-indicator">*</span>
+                                <label for="diezmos">
+                                    Diezmos<span class="required-indicator">*</span>
                                 </label>
-                            <form:input path="remitente"  required="true" />
+                            <form:input path="diezmos"  required="true" />
                         </div>
                     </s:bind>
-                    <s:bind path="documento.contenido">
+                    <s:bind path="sobre.ofrendas">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
-                                <label for="contenido">
-                                    Contenido<span class="required-indicator">*</span>
+                                <label for="ofrendas">
+                                    Ofrendas<span class="required-indicator">*</span>
                                 </label>
-                            <form:textarea path="contenido"  required="true" />
+                            <form:input path="ofrendas"  required="true" />
                         </div>
                     </s:bind>
-                    <s:bind path="documento.asunto">
+                    <s:bind path="sobre.primicias">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
-                                <label for="asunto">
-                                    Asunto<span class="required-indicator">*</span>
+                                <label for="primicias">
+                                    Primicias<span class="required-indicator">*</span>
                                 </label>
-                            <form:input path="asunto" maxlength="128" required="true" />
+                            <form:input path="primicias" maxlength="128" required="true" />
                         </div>
                     </s:bind>
-
+                    <s:bind path="sobre.otro">
+                        <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
+                                <label for="otro">
+                                    Otro<span class="required-indicator">*</span>
+                                </label>
+                            <form:input path="otro" maxlength="128" required="true" />
+                        </div>
+                    </s:bind>
                 </div>
                 <p class="well" style="margin-top: 10px;">
                     <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Crear Documento</button>
-                    <a class="btn " href="<s:url value='/documento'/>"><i class="icon-remove"></i> Cancelar </a>
+                    <a class="btn " href="<s:url value='/sobres'/>"><i class="icon-remove"></i> Cancelar </a>
                 </p>
             </fieldset>
         </form:form>

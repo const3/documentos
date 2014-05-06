@@ -52,7 +52,7 @@
                         <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
                     </p>
                 </c:if>
-                <input type="text" class="input-block-level" placeholder="RPE" name='j_username'>
+                <input type="text" class="input-block-level" placeholder="Usuario" name='j_username'>
                 <input type="password" class="input-block-level" placeholder="Contraseña" name='j_password'>
                 <label class="checkbox">
                     <input type='checkbox' class='chk' name='_spring_security_remember_me' id='remember_me' />
