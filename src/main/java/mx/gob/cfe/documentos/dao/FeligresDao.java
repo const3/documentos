@@ -5,6 +5,8 @@
  */
 package mx.gob.cfe.documentos.dao;
 
+import java.util.List;
+import mx.gob.cfe.documentos.model.Documento;
 import mx.gob.cfe.documentos.model.Feligres;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -31,6 +33,11 @@ public class FeligresDao {
 
     private Session currentSession() {
         return sessionFactory.getCurrentSession();
+    }
+
+    public List<Feligres> lista() {
+        Query query = currentSession().createQuery("select f from Feligres f order by nombre desc");
+        return query.list();
     }
 
     public Feligres crea(Feligres feligres) {
