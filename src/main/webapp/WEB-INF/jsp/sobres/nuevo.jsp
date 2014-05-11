@@ -9,6 +9,13 @@
 
 <html>
     <jsp:include page="../menu.jsp"/>
+    <head>
+        <title>
+            Nueva entrada
+        </title>
+        <link rel="stylesheet" href="<c:url value='/css/chosen.css' />" type="text/css">
+
+    </head>
     <body class="span12">
         <h1>Nuevo Documento</h1>
 
@@ -32,7 +39,7 @@
                                 <label for="nombre">
                                     Nombre<span class="required-indicator">*</span>
                                 </label>
-                            <form:input path="nombre" maxlength="128" required="true" />
+                            <form:input path="nombre" maxlength="128" required="true" autocomplete="off"/>
                         </div>
                     </s:bind>
 
@@ -75,14 +82,31 @@
                 </p>
             </fieldset>
         </form:form>
+        <%--
         <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
         <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>
         <script src="<c:url value='/js/i18n/jquery.ui.datepicker-es.min.js' />"></script>
         <script src="<c:url value='/js/bootstrap.min.js' />"></script>
+        --%>
+    <content>
+        <script src="<c:url value='/js/chosen.jquery.min.js' />"></script>
+        <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>
+        <script src="<c:url value='/js/jquery-ui-1.8.23.custom.min.js' />"></script>
+        <script src="<c:url value='/js/jquery.lightbox.min.js' />"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                $("input#titulo").focus();
+
+                $('input#nombre')
+                        .autocomplete({
+                            source: "<c:url value='/sobres/feligreses' />",
+                            select: function(event, ui) {
+                                $("input#feligresId").val(ui.item.id);
+                                return false;
+                            }
+                        });
+
             });
         </script>
-    </body>
+    </content>
+</body>
 </html>

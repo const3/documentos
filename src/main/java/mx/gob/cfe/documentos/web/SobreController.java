@@ -16,9 +16,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import mx.gob.cfe.documentos.dao.FeligresDao;
 import mx.gob.cfe.documentos.dao.SobreDao;
-import mx.gob.cfe.documentos.model.Documento;
+import mx.gob.cfe.documentos.model.Feligres;
 import mx.gob.cfe.documentos.model.Sobre;
+import mx.gob.cfe.documentos.utils.LabelValueBean;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -31,13 +33,14 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.springframework.core.enums.StaticLabeledEnumResolver.instance;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -51,6 +54,8 @@ public class SobreController {
     private final Logger log = LoggerFactory.getLogger(SobreController.class);
     @Autowired
     private SobreDao dao;
+    @Autowired
+    private FeligresDao fDao;
 
     @RequestMapping
     public String lista(Model model, Principal principal) {
@@ -89,6 +94,31 @@ public class SobreController {
         String nombre = dao.elimina(id);
         redirectAttributes.addFlashAttribute("mensaje", "Se elimino el informe de " + nombre);
         return "redirect:/sobres";
+    }
+
+    @SuppressWarnings("unchecked")
+    @RequestMapping(value = "/feligreses", params = "term", produces = "application/json")
+    public @ResponseBody
+    List<LabelValueBean> feligreses(HttpServletRequest request,
+            @RequestParam("term") String filtro) {
+        for (String nombre : request.getParameterMap().keySet()) {
+            log.debug("Param: {} : {}", nombre,
+                    request.getParameterMap().get(nombre));
+        }
+
+        List<Feligres> feligresia = fDao.lista();
+        List<LabelValueBean> valores = new ArrayList<>();
+        for (Feligres feligres : feligresia) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(feligres.getNombre());
+            sb.append(" | ");
+            sb.append(feligres.getApellidoPat());
+            sb.append(" | ");
+            sb.append(feligres.getApellidoMat());
+            valores.add(new LabelValueBean(feligres.getId(), sb.toString(),
+                    feligres.getNombre()));
+        }
+        return valores;
     }
 
     @RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
