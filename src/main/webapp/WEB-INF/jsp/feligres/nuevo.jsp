@@ -46,10 +46,10 @@
                     </s:bind>
                     <s:bind path="feligres.apellidoMat">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
-                                <label for="apellidoPat">
-                                    Apellido Paterno<span class="required-indicator">*</span>
+                                <label for="apellidoMat">
+                                    Apellido Materno<span class="required-indicator">*</span>
                                 </label>
-                            <form:input path="apellidoPat"  required="true" />
+                            <form:input path="apellidoMat"  required="true" />
                         </div>
                     </s:bind>
 

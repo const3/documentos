@@ -17,17 +17,16 @@
         <table id="lista" class="table table-striped">
             <thead>
                 <tr>
-                    <th>Fecha</th>
                     <th>Nombre</th>
                     <th>Apellido Materno</th>
                     <th>Apellido Paterno</th>
-                    
+
             </thead>
             <tbody>
                 <c:forEach items="${feligreses}" var="feligres">
                     <tr>
-                        <td><a href="<c:url value="/feligres/ver/${feligres.id}"/>"><fmt:formatDate value="${feligres.fecha}" pattern="yyyy-MM-dd" /> </a></td>
-                        <td>${feligres.nombre}</td>
+                        <td><a href="<c:url value="/feligres/ver/${feligres.id}"/>">${feligres.nombre} </a></td>
+
                         <td>${feligres.apellidoPat}</td>
                         <td>${feligres.apellidoMat}</td>
                         <td><a href="<c:url value="/feligres/edita/${feligres.id}"/>">Editar </a></td>

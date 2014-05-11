@@ -28,7 +28,7 @@
             </div>
             <div class="row-fluid">
                 <h4>Apellido Materno</h4>
-                <div>${feligres.apellidoPat}</div>
+                <div>${feligres.apellidoMat}</div>
             </div>
 
             <p class="well" style="margin-top: 10px;">
