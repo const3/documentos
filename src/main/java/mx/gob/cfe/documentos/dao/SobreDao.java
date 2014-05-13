@@ -75,7 +75,7 @@ public class SobreDao {
     }
 
     public List<Sobre> reporteSabado(Date fecha) {
-        Query query = currentSession().createQuery("select s from Sobre s  where s.fecha=:fecha order by fecha desc");
+        Query query = currentSession().createQuery("select s from Sobre s  where s.fecha=:fecha ");
         query.setDate("fecha", fecha);
         return query.list();
     }

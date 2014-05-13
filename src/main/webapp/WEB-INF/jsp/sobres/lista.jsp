@@ -13,6 +13,7 @@
         <h1>Lista de Informes</h1>
         <div class="well">
             <a href="<c:url value="/sobres/nuevo"/>" class="btn btn-primary"><i class="icon-file icon-white" ></i>Nuevo</a>
+            <a href="<c:url value="/sobres/download"/>" class="btn btn-success"><i class="icon-download icon-white" ></i>Nuevo</a>
         </div>
         <table id="lista" class="table table-striped">
             <thead>

@@ -39,7 +39,7 @@
                                 <label for="nombre">
                                     Nombre<span class="required-indicator">*</span>
                                 </label>
-                            <form:input path="nombre" maxlength="128" required="true" autocomplete="off"/>
+                            <form:input path="nombre" maxlength="128" required="true" />
                         </div>
                     </s:bind>
 

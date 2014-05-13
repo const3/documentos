@@ -121,14 +121,27 @@ public class SobreController {
         return valores;
     }
 
-    @RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
-    public String getDownloadPage(@PathVariable Long id, HttpServletResponse response, HttpServletRequest request) throws JRException, IOException {
+    @RequestMapping("/reportes")
+    public String reportes(@PathVariable Long id, Model model) {
+//        model.addAttribute("sobre", dao.obtiene(id));
+        return "sobres/reportes";
+    }
+
+    @RequestMapping(value = "/download", method = RequestMethod.GET)
+    public String getDownloadPage(HttpServletResponse response, HttpServletRequest request) throws JRException, IOException {
         log.debug("Received request to show download page");
-        Date fecha = (Date) request.getAttribute("fecha");
-        List<Sobre> sobres = dao.reporteSabado(fecha);
+        log.debug("Log");
+        Date fecha1 = (Date) request.getAttribute("fecha");
+        log.debug("fecha1{}", fecha1);
+        Date fecha = new Date();
+        List<Sobre> sobres = dao.lista();
+        for (Sobre s : sobres) {
+            log.debug("s:{}", s);
+        }
+        log.debug("sobressize{}", sobres.size());
         generaReporte("PDF", sobres, response);
 
-        return "redirect:/circular";
+        return "redirect:/sobres";
     }
 
     private void generaReporte(String tipo, List<Sobre> diezmos, HttpServletResponse response) throws JRException, IOException {

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="doc" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8374ff77-0fff-4884-8b8f-2aad71ce57a0">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="827b81eb-1219-4d8f-aff0-91038d160fc9"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="diezmos" class="java.lang.Integer"/>
+	<field name="ofrendas" class="java.lang.Integer"/>
+	<field name="primicias" class="java.lang.Integer"/>
+	<field name="otro" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="85c24427-9fbc-4539-b2f5-aa6c010f6480" x="144" y="112" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Diezmo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="869cb55a-a9c3-4e76-9255-707dbf0a1e1f" x="244" y="112" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ofrendas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="12881c31-8098-4a89-9a07-5d81d6f7c7d4" x="344" y="112" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Primicias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b62fc02-765d-4476-83f6-55d70e986fb4" x="444" y="112" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Otro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="33165895-e1a4-4f4a-b121-3e4055897e12" x="19" y="112" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3cdb95a0-cac2-459e-9ca5-21773c1f9823" x="102" y="0" width="342" height="27"/>
+				<textElement>
+					<font fontName="Nimbus Roman No9 L" size="22"/>
+				</textElement>
+				<text><![CDATA[Iglesia Adventista del Séptimo Día]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a26230cd-eab8-4219-b532-a1ac8d3cd280" x="237" y="27" width="107" height="30"/>
+				<textElement>
+					<font fontName="Nimbus Roman No9 L" size="22"/>
+				</textElement>
+				<text><![CDATA[Zambrano]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="68081c13-9b76-4d84-ae95-8953c637ce91" x="144" y="57" width="273" height="30"/>
+				<textElement>
+					<font fontName="Nimbus Roman No9 L" size="22"/>
+				</textElement>
+				<text><![CDATA[Departamento de tesorería]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="ff7c435f-d5de-4857-8733-30f2e85ce0e3" x="144" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{diezmos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d63a5c6a-8c56-4f5e-9bb2-025d69be1b8f" x="244" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ofrendas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="53c4f6cc-05bb-4cc3-93da-9a1bef8a48eb" x="344" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{primicias}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9be6bace-f9d8-43af-8ebf-8be474819bde" x="444" y="0" width="82" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{otro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f3249f9-c1b7-44a9-ac5c-022aa1006211" x="19" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="dd6ca06d-a65f-493f-aa24-bdb9e05c92be" x="102" y="0" width="145" height="19"/>
+				<textElement/>
+				<text><![CDATA[Montemorelos Nuevo León a]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="9659f2b3-3df8-4adc-a04d-306e30272772" x="247" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
