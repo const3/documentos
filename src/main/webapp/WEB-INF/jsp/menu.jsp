@@ -31,20 +31,22 @@
                                 <li ><a href="<c:url value='/usuario'/>">Usuarios</a></li>
                                 </c:if>
                             <!--Dropdown -->
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archivos <b class="caret"></b></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li> <a href="<c:url value='/documento'/>">Documento </a></li>
+                            <%--
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archivos <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li> <a href="<c:url value='/documento'/>">Documento </a></li>
+                                <li class="divider"></li>
+                                <li> <a href="<c:url value='/documento/reporte'/>">Reporte</a></li>
+                                    <c:if test="${usuarioLogeado.puesto=='jefe'}">
                                     <li class="divider"></li>
-                                    <li> <a href="<c:url value='/documento/reporte'/>">Reporte</a></li>
-                                        <c:if test="${usuarioLogeado.puesto=='jefe'}">
-                                        <li class="divider"></li>
-                                        <li> <a href="<c:url value='/documento/autorizar'/>">Autorizar</a></li>
-                                        </c:if>
-                                </ul>
-                            </li> <!--
-                            <li ><a href="<c:url value='/documento/enviados'/>">Documentos Compartidos</a></li>-->
+                                    <li> <a href="<c:url value='/documento/autorizar'/>">Autorizar</a></li>
+                                    </c:if>
+                            </ul>
+                        </li> <%--
+                        <li ><a href="<c:url value='/documento/enviados'/>">Documentos Compartidos</a></li>--%>
                             <li ><a href="<c:url value='/sobres'/>">Diezmos</a></li>
+                            <li ><a href="<c:url value='/feligres'/>">Feligresía</a></li>
                         </ul>
 
 

@@ -18,7 +18,11 @@
             <div class="hero-unit">
                 <h1>Hola</h1>
                 <p>En esta parte del sistema se le estara avisando de los cambios y modificaciones hechos recientemente.</p>
-
+                <ul>
+                    <li>Se agrego la funcionalidad para agregar feligres.</li>
+                    <li>Se agrego un autocomplete para poder agilizar la busqueda de nombres de usuario.</li>
+                    <li>Se termino la funcionalidad de reportes.</li>
+                </ul>
             </div>
 
 

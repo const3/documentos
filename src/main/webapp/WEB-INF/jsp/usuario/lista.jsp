@@ -19,13 +19,12 @@
             <table id="lista" class="table table-striped well-small">
                 <thead>
                     <tr>
-                        <th>RPE</th>
+                        <th>Username</th>
                         <th>Nombre</th>
                         <th>Apellido Paterno</th>
                         <th>Apellido Materno</th>
                         <th>Correo</th>
                         <th>Puesto</th>
-                        <th>Oficina</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,7 +36,6 @@
                             <td>${usuario.apMaterno}</td>
                             <td>${usuario.correo}</td>
                             <td>${usuario.puesto}</td>
-                            <td>${usuario.oficina}</td>
                         </tr>
                     </c:forEach> 
                 </tbody>

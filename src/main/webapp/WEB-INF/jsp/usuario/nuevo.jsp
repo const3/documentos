@@ -30,7 +30,7 @@
                         <div  class="row-fluid <c:if test='${not empty status.errorMessages}'>error</c:if>">
 
                                 <label for="username" class="col-sm-1">
-                                    R.P.E<span class="required-indicator">*</span>
+                                    Username<span class="required-indicator">*</span>
                                 </label>
                                 <div class="col-xs-2">
                                 <form:input     path="username" maxlength="128" class="form-control" required="true" />
@@ -97,21 +97,17 @@
                 <s:bind path="usuario.oficina">
                     <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
                             <label for="oficina">
-                                Oficina
+                                Departamento
                                 <span class="required-indicator">*</span>
                             </label>
                             <select name="oficina">  
-                                <option value="DA" selected>Administración</option>  
-                                <option value="DCL">Calidad</option>  
-                                <option value="DCFE">CFEfectiva</option>  
-                                <option value="DC">Comercial</option>  
-                                <option value="DCSC">CSC</option>  
-                                <option value="DZ">Distribución</option>  
-                                <option value="DM">Medición</option>  
-                                <option value="DP">Personal</option>  
-                                <option value="DPL">Planeación</option>  
-                                <option value="DI">Sistemas</option>  
-                                <option value="SZ">Superintendencia</option>  
+                                <option value="DA" selected>Esc. Sábatica</option>  
+                                <option value="DCL">Diacono</option>  
+                                <option value="DCFE">Anciano</option>  
+                                <option value="DC">Pastor</option>  
+                                <option value="SZ">Clubes</option>  
+                                <option value="SZ">Sociedad Jov.</option>  
+                                <option value="SZ">Multimedia y Comunicación</option>  
                             </select> 
                         </div>
                 </s:bind>
