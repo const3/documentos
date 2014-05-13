@@ -13,11 +13,14 @@
         <title>
             Nueva entrada
         </title>
+        <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css' />" type="text/css" />
+        <link rel="stylesheet" href="<c:url value='/css/bootstrap-responsive.min.css' />" type="text/css" /> 
+        <link rel="stylesheet" href="<c:url value='/css/jquery-ui-1.8.23.custom.css' />" type="text/css" /> 
         <link rel="stylesheet" href="<c:url value='/css/chosen.css' />" type="text/css">
 
     </head>
     <body class="span12">
-        <h1>Nuevo Documento</h1>
+        <h1>Crear informe</h1>
 
 
         <c:url var="nuevo" value="/sobres/crea"/>
@@ -77,7 +80,7 @@
                     </s:bind>
                 </div>
                 <p class="well" style="margin-top: 10px;">
-                    <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Crear Documento</button>
+                    <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Crear</button>
                     <a class="btn " href="<s:url value='/sobres'/>"><i class="icon-remove"></i> Cancelar </a>
                 </p>
             </fieldset>

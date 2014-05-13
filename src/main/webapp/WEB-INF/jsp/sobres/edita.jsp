@@ -10,7 +10,7 @@
 <html>
     <jsp:include page="../menu.jsp"/>
     <body class="span12">
-        <h1>Nuevo Documento</h1>
+        <h1>Editar Informe</h1>
 
 
         <c:url var="actualiza" value="/sobres/actualiza"/>
@@ -30,7 +30,7 @@
             <fieldset>
                 <div class="row-fluid">
 
-                 
+
                     <s:bind path="sobres.nombre">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
                                 <label for="nombre">

@@ -110,10 +110,8 @@ public class SobreController {
         List<LabelValueBean> valores = new ArrayList<>();
         for (Feligres feligres : feligresia) {
             StringBuilder sb = new StringBuilder();
-            sb.append(feligres.getNombre());
-            sb.append(" | ");
-            sb.append(feligres.getApellidoPat());
-            sb.append(" | ");
+            sb.append(feligres.getNombre()+" ");
+            sb.append(feligres.getApellidoPat()+" ");
             sb.append(feligres.getApellidoMat());
             valores.add(new LabelValueBean(feligres.getId(), sb.toString(),
                     feligres.getNombre()));

@@ -10,7 +10,7 @@
 <html>
     <jsp:include page="../menu.jsp"/>
     <body class="span12">
-        <h1>Nuevo Documento</h1>
+        <h1>Nuevo Feligres</h1>
 
 
         <c:url var="nuevo" value="/feligres/crea"/>
@@ -56,7 +56,7 @@
                 </div>
             </fieldset>
             <p class="well" style="margin-top: 10px;">
-                <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Crear Documento</button>
+                <button type="submit" name="crearBtn" class="btn btn-primary " id="crear" ><i class="icon-ok icon-white"></i>&nbsp;Crear Feligres</button>
                 <a class="btn " href="<s:url value='/feligres'/>"><i class="icon-remove"></i> Cancelar </a>
             </p>
         </form:form>

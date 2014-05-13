@@ -32,7 +32,8 @@
                 <div>${sobre.ofrendas}</div>
             </div>
             <p class="well" style="margin-top: 10px;">
-                <a class="btn " href="<s:url value='/sobres'/>"><i class="icon-list"></i> Lista </a>
+                <a class="btn btn-primary " href="<s:url value='/sobres'/>"><i class="icon-white icon-list"></i> Lista </a>
+                <a class="btn btn-danger " href="<s:url value='/sobres/eliminar/${sobre.id}'/>"><i class="icon-white icon-remove-sign"></i> Elimina</a>
             </p>
 
             <script src="<c:url value='/js/jquery-1.8.1.min.js' />"></script>

@@ -10,7 +10,7 @@
 <html>
     <jsp:include page="../menu.jsp"/>
     <body class="span12">
-        <h1>Nuevo Feligres</h1>
+        <h1>Editar Datos Feligres</h1>
 
 
         <c:url var="actualiza" value="/feligres/actualiza"/>
@@ -29,7 +29,7 @@
             <fieldset>
                 <div class="row-fluid">
 
-                 
+
                     <s:bind path="feligres.nombre">
                         <div class="control-group <c:if test='${not empty status.errorMessages}'>error</c:if>">
                                 <label for="nombre">
@@ -55,11 +55,11 @@
                             <form:input path="apellidoMat"  required="true" />
                         </div>
                     </s:bind>
-                    
+
                 </div>
             </fieldset>
             <p class="well" style="margin-top: 10px;">
-                <button type="submit" name="actualizarBtn" class="btn btn-primary " id="actualizar" ><i class="icon-ok icon-white"></i>&nbsp;Actualizar Informe</button>
+                <button type="submit" name="actualizarBtn" class="btn btn-primary " id="actualizar" ><i class="icon-ok icon-white"></i>&nbsp;Actualizar Datos</button>
                 <a class="btn " href="<s:url value='/feligres'/>"><i class="icon-remove"></i> Cancelar </a>
             </p>
 
